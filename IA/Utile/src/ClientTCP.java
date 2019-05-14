@@ -3,54 +3,54 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 /**
- * Class for basic interactions with a TCP Server (send, receive, connect, disconnect...)
+ * Classe proposant les interactions basiques avec un serveur TCP (send, receive, connect, disconnect)
  */
 public class ClientTCP {
 
-    private Socket server;
+    private Socket serveur;
 
     private BufferedReader bufferReceive;
     private BufferedWriter bufferSend;
 
 
     /**
-     * Contructs the client. This contructor does nothing except returning an client. Use <b>connect</b> to connect to a server
+     * Construit le client. Ce constructeur ne fait rien à part retourner un client. Utilisez <b>connect</b> pour vous connecter à un serveur
      */
     public ClientTCP() {
 
     }
 
     /**
-     * Attempts to connect to a server using its address and port. If the client is already connected to a server, he'll be disconnected.
-     * @param ip_address IP Address of the server
-     * @param port The port to connect to
-     * @throws IOException If there's any error (connection failed, server not launched...)
+     * Essaies d'établir une connexion à un serveur en utilisant son adresse et son port. Si le client est déjà connecté à un serveur, il sera déconnecté.
+     * @param ip_address Adresse IP du serveur
+     * @param port Le port auquel se connecter
+     * @throws IOException S'il y a une erreur (connexion échouée, serveur non lancée)
      */
     public void connect(String ip_address, int port) throws IOException {
-        if(server != null && server.isConnected()){
+        if(serveur != null && serveur.isConnected()){
             disconnect();
-            server = null;
+            serveur = null;
         }
 
-        server = new Socket(InetAddress.getByName(ip_address), port);
+        serveur = new Socket(InetAddress.getByName(ip_address), port);
 
-        bufferReceive = new BufferedReader(new InputStreamReader(server.getInputStream()));
-        bufferSend = new BufferedWriter(new OutputStreamWriter(server.getOutputStream()));
+        bufferReceive = new BufferedReader(new InputStreamReader(serveur.getInputStream()));
+        bufferSend = new BufferedWriter(new OutputStreamWriter(serveur.getOutputStream()));
     }
 
     /**
-     * Read a line sent by the server in the buffer and returns it. <b>This method will block the execution until a message is received</b>
-     * @return The server's message
-     * @throws IOException If there's any error (not connected for example)
+     * Lit une ligne envoyée par le serveur dans le buffer et la retourne. <b>Cette méthode bloquera l'exécution jusqu'à ce qu'un message soit reçu</b>
+     * @return Le message du serveur
+     * @throws IOException S'il y a une erreur (non connecté par exemple)
      */
     public String receive() throws IOException {
         return bufferReceive.readLine();
     }
 
     /**
-     * Writes a message in the buffer and sends it to the server
-     * @param message The message to send
-     * @throws IOException If there's any error (not connected for example)
+     * Écrit un message dans le buffer et l'envoie au serveur
+     * @param message Le message à envoyer
+     * @throws IOException S'il y a une erreur (non connecté par exemple)
      */
     public void send(String message) throws IOException {
         bufferSend.write(message);
@@ -58,11 +58,11 @@ public class ClientTCP {
     }
 
     /**
-     * Disconnects the client from the server
-     * @throws IOException If there's any error (not connected for example)
+     * Déconnecte le client du serveur
+     * @throws IOException S'il y a une erreur (non connecté par exemple)
      */
     public void disconnect() throws IOException {
-        server.close();
-        server = null;
+        serveur.close();
+        serveur = null;
     }
 }

@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args){
-        System.out.println("Ca marche");
+        Plateau plateau = Plateau.getPlateauFromFile("plateau.txt");
+        System.out.println(plateau.affichage());
     }
 }
