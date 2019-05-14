@@ -1,5 +1,5 @@
 /**
- * Cette énumération liste toutes les directions possibles pour une entité déplaçable, basées sur les points cardinaux et leurs points sous-cardinaux
+ * Cette énumération liste toutes les directions possibles pour une entité se déplaçant, basées sur les points cardinaux et leurs points sous-cardinaux
  */
 public enum Direction {
     N(-1, 0), NW(-1, -1), W(0, -1), SW(1, -1), S(1, 0), SE(1, 1), E(0, 1), NE(-1, 1);
