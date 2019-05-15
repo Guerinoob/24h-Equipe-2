@@ -51,8 +51,8 @@ public class Noeud {
         ArrayList<Direction> listePointsCardinaux = Direction.getQuatrePointsCardinaux();
         enfants = new ArrayList<>();
         for (Direction direction : listePointsCardinaux) {
-            int nouvelleLigne = ligne + direction.getLine();
-            int nouvelleColonne = colonne + direction.getColumn();
+            int nouvelleLigne = ligne + direction.getLigne();
+            int nouvelleColonne = colonne + direction.getColonne();
             Case cas = plateau.getCase(nouvelleColonne, nouvelleLigne);
             if (cas != null  &&  !cas.getContenu().equals("X") ) {
                 //Si la case existe réellement  et que c'est pas un mur

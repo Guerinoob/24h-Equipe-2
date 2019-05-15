@@ -14,7 +14,7 @@ import java.util.List;
 public class Plateau {
 
     private int nbLignes, nbColonnes;
-    private char[][] plateau;
+    private Case[][] plateau;
 
     /**
      * Construit un plateau remplit d'espaces libres de dimensions lignes x colonnes
@@ -25,13 +25,13 @@ public class Plateau {
         this.nbLignes = lignes;
         this.nbColonnes = colonnes;
 
-        plateau = new char[nbLignes][nbColonnes];
+        plateau = new Case[nbLignes][nbColonnes];
 
         for(int i = 0; i < nbLignes; i++){
 
             for(int j = 0; j < nbColonnes; j++){
 
-                plateau[i][j] = '|';
+                plateau[i][j] =new Case(j,i,"|");
 
             }
 
@@ -45,8 +45,20 @@ public class Plateau {
      * @param valeur Nouvelle valeur
      * @throws ArrayIndexOutOfBoundsException Si la ligne ou la colonne n'est pas valide
      */
-    public void setCase(int ligne, int colonne, char valeur) throws ArrayIndexOutOfBoundsException{
-        plateau[ligne][colonne] = valeur;
+    public void setCase(int ligne, int colonne, String valeur) throws ArrayIndexOutOfBoundsException{
+        plateau[ligne][colonne].setContenu(valeur);
+    }
+    /**
+     * Retourne la case situé dans la colonne et la ligne donné en paramètres en vérifiant que ce sont des coordonnées compatibles
+     * @param colonne
+     * @param ligne
+     * @return
+     */
+    public Case getCase(int colonne,int ligne){
+        if(colonne < 0 || colonne > plateau.length-1 || ligne < 0 || ligne > plateau[colonne].length-1){
+            return null;
+        }
+        return plateau[ligne][colonne];
     }
 
 
@@ -112,7 +124,7 @@ public class Plateau {
             String[] ligneActuelle = s.split(",");
 
             for(int j = 0; j < ligneActuelle.length; j++){
-                plateau.setCase(i, j, ligneActuelle[j].charAt(0));
+                plateau.setCase(i, j, ligneActuelle[j]);
             }
 
         }
@@ -133,7 +145,7 @@ public class Plateau {
 
             for(int j = 0; j < nbColonnes; j++){
 
-                affichage += " "+plateau[i][j]+" ";
+                affichage += " "+plateau[i][j].getContenu()+" ";
 
             }
             affichage += "\n";
