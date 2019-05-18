@@ -29,6 +29,9 @@ class Database
     public $query = array();
 
 
+    public $prepared_stmt;
+
+
     /**
      * Constructeur de la classe Database
      * @param string $db_user Utilisateur de la base
@@ -114,6 +117,73 @@ class Database
         }
 
         return false;
+    }
+
+
+    /**
+     * Prépare une requête et l'exécute
+     * @param string $query Requête à préparer
+     * @return bool Faux en cas d'erreur, Vrai en cas de succès
+     */
+    public function prepare($query){
+        $this->prepared_stmt = mysqli_prepare($this->mysqli, $query);
+
+        if(!$this->prepared_stmt) return false;
+
+        return true;
+    }
+
+    /**
+     * Exécute la dernière requête préparée
+     * @param array $args Tableau de valeurs correspondant aux paramètres de la requête préparée <b>dans l'ordre d'apparition dans celle-ci</b>
+     * @return bool|mixed Faux en cas d'erreur, Un tableau à deux dimensions (chaque ligne du tableau est un tableau associatif) si la requête est une requête SELECT, vrai en cas de succès pour une requête autre
+     */
+    public function execute_prepared_query($args){
+        $types = "";
+        $array = array();
+
+        foreach ($args as $value){
+            switch(gettype($value)){
+                case 'integer':
+                    $types .= 'i';
+                    break;
+
+                case 'string':
+                    $types .= 's';
+                    break;
+
+                case 'double':
+                    $types .= 'd';
+                    break;
+
+                default:
+                    $types .= 's';
+                    break;
+            }
+
+            $array[] = &$value;
+        }
+
+        array_unshift($array, $types);
+
+
+        if(count($array) > 0){
+            $ref = new ReflectionClass('mysqli_stmt');
+            $method = $ref->getMethod('bind_param');
+
+            if(!$method->invokeArgs($this->prepared_stmt, $array)) return false;
+        }
+
+
+        if(!$this->prepared_stmt->execute()) return false;
+
+        if(($results = $this->prepared_stmt->get_result())){
+            return $results->fetch_all(MYSQLI_ASSOC);
+        }
+
+        return true;
+
+
     }
 
 }
