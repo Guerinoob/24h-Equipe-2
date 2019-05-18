@@ -1,12 +1,13 @@
 <?php
 include('../settings.php');
 
-global $db;
 
-$req = 'SELECT * FROM users WHERE username = ?';
-$db->prepare($req);
+if(!get_logged_user()) {
 
+    authenticate_user_by_username('test', 'test');
 
-$test = 'test';
-var_dump($db->execute_prepared_query(array($test)));
+}
 
+?>
+
+<a href="page2.php">Page 2</a>
