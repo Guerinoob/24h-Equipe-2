@@ -13,13 +13,29 @@ class Database
      */
     public $mysqli;
 
+    /**
+     * @var string Utilisateur de la base
+     */
     private $db_user;
 
+
+    /**
+     * @var string Mot de passe de l'utilisateur
+     */
     private $db_password;
 
+
+    /**
+     * @var string Nom d'hôte de la base
+     */
     private $db_host;
 
+
+    /**
+     * @var string Nom de la base de données
+     */
     private $db_name;
+
 
     /**
      * @var array Tableau associatif contenant des informations sur la dernière requête SELECT exécutée
@@ -29,6 +45,9 @@ class Database
     public $query = array();
 
 
+    /**
+     * @var mysqli_stmt Instance de mysqli_stmt de la dernière requête préparée
+     */
     public $prepared_stmt;
 
 
