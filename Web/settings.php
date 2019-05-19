@@ -9,6 +9,7 @@ define('DB_NAME', 'test24h');
 
 include_once('includes/class_database.php');
 include_once('includes/class_user.php');
+include_once('includes/class_users.php');
 include_once('includes/utils_user.php');
 
 

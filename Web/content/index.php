@@ -1,6 +1,6 @@
 <?php
-include_once('../settings.php');
-
+include_once('../includes/utils_page.php');
+get_header();
 
 if(!get_logged_user()) {
 
@@ -10,3 +10,7 @@ if(!get_logged_user()) {
 ?>
 
 <a href="page2.php">Page 2</a>
+
+
+<?php
+get_footer();

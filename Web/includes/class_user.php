@@ -28,6 +28,36 @@ class User
     }
 
     /**
+     * Tente de retrouver l'utilisateur correspondant à l'identifiant donné
+     * @param string|int $user_id L'ID de l'utilisateur recherché
+     * @return bool Faux en cas d'erreur, vrai sinon
+     */
+    public function init_by_id($user_id){
+        global $db;
+
+        $req = "SELECT * FROM users WHERE id = ?";
+        $db->prepare($req);
+        $row = $db->execute_prepared_query(array($user_id))[0];
+
+        if(!$row){
+            return false;
+        }
+
+        $this->ID = $row['id'];
+
+
+        unset($row['id']);
+        unset($row['password']);
+
+        foreach($row as $key=>$value){
+            $this->attr[$key] = $value;
+        }
+
+        return true;
+    }
+
+
+    /**
      * Tente de retrouver l'utilisateur correspondant au username et au password
      * @param string $username Username de l'utilisateur
      * @param string $password Mot de passe de l'utilisateur
