@@ -1,18 +1,39 @@
 <?php
 
-
+/**
+ * Cette classe représente un utilisateur du site. Elle permet de récupérer des informations le concernant mais aussi de les modifier avec la méthode <b>set</b> puis la méthode <b>save</b>.
+ */
 class User
 {
 
+    /**
+     * @var int ID de l'utilisateur
+     */
     public $ID = -1;
 
+    /**
+     * @var array Tableau associatif contenant les attributs de la table users
+     *
+     * Liste des attributs :
+     * username
+     * email
+     */
     public $attr = array();
 
-    public function __construct($username = ''){
+    /**
+     * Constructeur de la classe User
+     */
+    public function __construct(){
 
     }
 
-    public function init($username, $password){
+    /**
+     * Tente de retrouver l'utilisateur correspondant au username et au password
+     * @param string $username Username de l'utilisateur
+     * @param string $password Mot de passe de l'utilisateur
+     * @return bool Vrai si l'utilisateur est retrouvé, faux sinon
+     */
+    public function init_by_username($username, $password){
         if(empty($username) || empty($password)){
             return false;
         }
@@ -21,7 +42,7 @@ class User
 
         $req = "SELECT * FROM users WHERE username = ? AND password = ?";
         $db->prepare($req);
-        $row = $db->execute_prepared_query(array('test', 'test'))[0];
+        $row = $db->execute_prepared_query(array($username, $password))[0];
 
         if(!$row){
             return false;
@@ -31,16 +52,57 @@ class User
 
 
         unset($row['id']);
+        unset($row['password']);
 
         foreach($row as $key=>$value){
             $this->attr[$key] = $value;
         }
 
-        $_SESSION['user'] = $this;
+        return true;
+    }
+
+
+
+    /**
+     * Tente de retrouver l'utilisateur correspondant au username et au password
+     * @param string $email Email de l'utilisateur
+     * @param string $password Mot de passe de l'utilisateur
+     * @return bool Vrai si l'utilisateur est retrouvé, faux sinon
+     */
+    public function init_by_email($email, $password){
+        if(empty($email) || empty($password)){
+            return false;
+        }
+
+        global $db;
+
+        $req = "SELECT * FROM users WHERE email = ? AND password = ?";
+        $db->prepare($req);
+        $row = $db->execute_prepared_query(array($email, $password))[0];
+
+        if(!$row){
+            return false;
+        }
+
+        $this->ID = $row['id'];
+
+
+        unset($row['id']);
+        unset($row['password']);
+
+        foreach($row as $key=>$value){
+            $this->attr[$key] = $value;
+        }
 
         return true;
     }
 
+
+    /**
+     * Méthode permettant de récupérer la valeur d'un attribut de l'utilisateur
+     * @param string $key Attribut souhaité
+     * @return int|mixed L'ID si celui-ci est demandé, l'attribut demandé sinon
+     */
     public function get($key){
         if(mb_strtolower($key) == 'id')
             return $this->ID;
@@ -54,6 +116,12 @@ class User
 
     }
 
+    /**
+     * Permet de changer la valeur d'un attribut de l'utilisateur
+     * @param string $key Attribut à changer
+     * @param mixed $value Valeur à attribuer à $key
+     * @return bool Faux si on tente de set l'ID, vrai si la mutation s'est bien faite.
+     */
     public function set($key, $value){
         if(mb_strtolower($key) == 'id'){
             return false;
@@ -61,6 +129,34 @@ class User
 
         $this->attr[$key] = $value;
         return true;
+    }
+
+
+    /**
+     * Permet de sauvegarder l'utilisateur dans la base de données. Cette fonction doit être appelée notamment quand on change des attributs de l'utilisateur, avec la méthode <b>set</b> par exemple
+     * @return bool|mixed Faux en cas d'erreur ou si l'instance n'est pas initialisée, Vrai sinon.
+     */
+    public function save(){
+        if($this->ID == -1) return false;
+
+        $req = "UPDATE users SET ";
+
+        $args = array();
+
+        foreach($this->attr as $key=>$value){
+            $req .= "$key = ?, ";
+            $args[] = $value;
+        }
+
+        $req = substr($req, 0, strlen($req) - 2);
+
+        $req .= " WHERE id = ?";
+        $args[] = $this->ID;
+
+        global $db;
+        if(!$db->prepare($req)) return false;
+
+        return $db->execute_prepared_query($args);
     }
 
 }
