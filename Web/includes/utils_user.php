@@ -96,7 +96,7 @@ function get_logged_user(){
  * Permet de déconnecter l'utilisateur actuellement connecté
  */
 function disconnect_current_user(){
-    if($user = get_logged_user()){
+    if(get_logged_user() != null){
         unset($_SESSION['user']);
     }
 }

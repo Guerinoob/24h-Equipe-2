@@ -35,11 +35,11 @@ if(isset($_POST['submit'])){
 
 <form method="POST" action="">
     <fieldset>
-        <legend>Incrisption</legend>
+        <legend>Inscription</legend>
 
-        <label for="email">Email </label><input type="email" name="email" id="email" />
+        <label for="email">Email </label><input type="email" name="email" id="email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" />
 
-        <label for="username">Username </label><input type="text" id="username" name="username" />
+        <label for="username">Username </label><input type="text" id="username" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>" />
 
         <label for="password">Mot de passe </label><input type="password" name="password" id="password" />
 
