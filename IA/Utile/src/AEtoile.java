@@ -39,6 +39,7 @@ public class AEtoile {
             for (Noeud selectionne : pretendants) {
                 if (!selectionne.estPresent(listeFerme)) {//Si on est pas déja passé par lui on l'ajoute
                     selectionne.calculHeuristique(arrive);
+
                     listeOuverte.add(selectionne);
                 }
             }
@@ -53,7 +54,7 @@ public class AEtoile {
     private static Comparator<Noeud> comparateurHeuristique = new Comparator<Noeud>() {
         @Override
         public int compare(Noeud n1, Noeud n2) {
-            return n1.getHeuristique() - n2.getHeuristique();
+            return n1.getSomme() - n2.getSomme();
         }
     };
 }

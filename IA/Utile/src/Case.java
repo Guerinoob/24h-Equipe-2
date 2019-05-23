@@ -8,7 +8,22 @@ public class Case {
         this.ligne = ligne;
         this.contenu = contenu;
     }
+    public boolean estUnMur(){
+        return contenu.equals("X");
+    }
 
+    @Override
+    public String toString() {
+        return "Case{" +
+                "colonne=" + colonne +
+                ", ligne=" + ligne +
+                ", contenu='" + contenu + '\'' +
+                '}';
+    }
+
+    public boolean estUnePiece(){
+        return contenu.equals("O");
+    }
     public int getColonne() {
         return colonne;
     }

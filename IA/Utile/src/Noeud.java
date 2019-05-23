@@ -5,8 +5,18 @@ public class Noeud {
     private int colonne;
     private int ligne;
     private Noeud parent = null;
-    private int cout;
+    private int cout = 0;
     private int heuristique;
+    private int somme;
+
+    public int getSomme() {
+        return somme;
+    }
+
+    public void setSomme(int somme) {
+        this.somme = somme;
+    }
+
     private ArrayList<Noeud> enfants;
 
     public Noeud(int colonne, int ligne) {
@@ -28,7 +38,7 @@ public class Noeud {
 
     public boolean estPresent(LinkedList<Noeud> liste) {
         for (Noeud n : liste) {
-            if (n.estEgal(this)) {
+            if (n.estEgal(this) && n.getSomme() >= this.getSomme()) {
                 return true;
             }
         }
@@ -41,6 +51,16 @@ public class Noeud {
      */
     public void calculHeuristique(Noeud objectif) {
         heuristique = Math.abs(colonne - objectif.getColonne()) + Math.abs(ligne - objectif.getLigne());
+        somme = heuristique +cout;
+    }
+
+    @Override
+    public String toString() {
+        return "Noeud{" +
+                "colonne=" + colonne +
+                ", ligne=" + ligne +
+                ", heuristique=" + heuristique +
+                '}';
     }
 
     /**
@@ -54,10 +74,11 @@ public class Noeud {
             int nouvelleLigne = ligne + direction.getLigne();
             int nouvelleColonne = colonne + direction.getColonne();
             Case cas = plateau.getCase(nouvelleColonne, nouvelleLigne);
-            if (cas != null  &&  !cas.getContenu().equals("X") ) {
+            if (cas != null  &&  !cas.estUnMur() ) {
                 //Si la case existe réellement  et que c'est pas un mur
                 Noeud enfant = new Noeud(nouvelleColonne, nouvelleLigne);
                 enfant.setParent(this); //On crée le lien avec son père
+                enfant.setCout(this.getCout()+1);
                 enfants.add(enfant);
             }
         }
@@ -75,6 +96,15 @@ public class Noeud {
             suivant = suivant.getParent();
         }
         return chemin;
+    }
+    public int getProfondeur(){
+        Noeud suivant = this;
+        int cpt =0;
+        while ( suivant.getParent()  != null){
+            cpt++;
+            suivant = suivant.getParent();
+        }
+        return cpt;
     }
     public ArrayList<Noeud> getEnfants() {
         return enfants;
