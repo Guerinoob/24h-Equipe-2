@@ -45,7 +45,7 @@ if(isset($_POST['submit'])){
                     echo $key;
                 }
             }
-            echo $username.', (ID = '.$user_id.'), vous êtes bien inscrit !';
+            header('Location: login.php');
         }
     }
 }
@@ -153,8 +153,8 @@ if(isset($_POST['submit'])){
                                 </div>
                             </div>
 
-                            <button class="button is-block is-info is-fullwidth has-text-weight-medium">Créer le compte</button>
-                            <a href="#Register" class="is-link has-text-grey-light" >Déjà un compte ? Se connecter.</a>
+                            <input type="submit" name="submit" id="submit" value="Créer le comtpe" class="button is-block is-info is-fullwidth has-text-weight-medium" />
+                            <a href="login.php" class="is-link has-text-grey-light" >Déjà un compte ? Se connecter.</a>
                         </form>
                     </div>
                 </div>

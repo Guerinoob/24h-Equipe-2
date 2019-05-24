@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
             echo 'Erreur';
         }
         else{
-            echo 'Connexion réussie !';
+            header('Location: voir_top_producteurs.php');
         }
     }
 }
@@ -64,7 +64,7 @@ if(isset($_POST['submit'])){
                                 </div>
                             </div>
 
-                            <button class="button is-block is-info is-fullwidth has-text-weight-medium">Connexion</button>
+                            <input type="submit" name="submit" id="submit" value="Connexion" class="button is-block is-info is-fullwidth has-text-weight-medium" />
                         </form>
                     </div>
                 </div>

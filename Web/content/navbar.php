@@ -19,19 +19,49 @@
                 <a href="index.php" class="navbar-item">
                     Accueil
                 </a>
-                <a href="carte.php" class="navbar-item">
+                <a href="voir_top_producteurs.php" class="navbar-item">
                     Voir les pays producteurs
                 </a>
-                <a href="commande.php" class="navbar-item">
-                    Passer une commande
-                </a>
-                <a href="voir_commandes_exportateur.php" class="navbar-item">
-                    Voir les commandes
-                </a>
+                <?php
 
-                <a href="ajoutPays.php" class="navbar-item">
-                    Ajouter un pays
-                </a>
+                $user = get_logged_user();
+
+                if($user){
+                    if(is_exportateur($user->get('id'))){
+                        ?>
+                        <a href="voir_commandes_exportateur.php" class="navbar-item">
+                            Voir les commandes
+                        </a>
+                        <?php
+
+                    }else if(is_importateur($user->get('id'))){
+                        ?>
+                        <a href="commande.php" class="navbar-item">
+                            Passer une commande
+                        </a>
+
+
+                        <a href="voir_commandes_importateur.php" class="navbar-item">
+                            Voir les commandes
+                        </a>
+                        <?php
+
+                    } else if(is_admin($user->get('id'))){
+                        ?>
+
+                        <a href="ajoutPays.php" class="navbar-item">
+                            Ajouter un pays
+                        </a>
+
+                        <?php
+                    }
+                }
+
+                ?>
+
+
+
+
                 <hr class="navbar-divider">
                 <a href="about.php" class="navbar-item">
                     A propos
