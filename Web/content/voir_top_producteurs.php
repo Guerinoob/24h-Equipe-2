@@ -51,7 +51,7 @@ else {
                 echo '<tr>';
 
                     echo '<td>'.$classement.'</td>';
-                    echo '<td>'.$pays['nom'].'</td>';
+                    echo '<td><img src="images/'.$pays['drapeau'].'" width="30px" height="30px" /> '.$pays['nom'].'</td>';
                     echo '<td>'.$pays['description'].'</td>';
                     echo '<td>'.$pays['capitale'].'</td>';
                     echo '<td>'.$pays['nb_habitants'].'</td>';
