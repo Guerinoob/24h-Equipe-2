@@ -52,4 +52,58 @@ public class Ilot {
         return null;
     }
 
+
+    public ArrayList<Integer> dechiffreEnPuissanceDeDeux(int nb)
+    {
+        //nb doit être >= 1
+
+        ArrayList<Integer> listePuissance = new ArrayList<Integer>();
+
+        if(puissanceProche(nb) == 0) {
+            listePuissance.add(puissanceProche(nb));
+            return listePuissance;
+        }
+        else {
+        	int pProche;
+            while ( (pProche = puissanceProche(nb) ) != 0) {
+                listePuissance.add(pProche);
+                nb = (int) (nb - Math.pow(2, pProche));
+           
+            }
+            if(nb == 1)
+            {
+            	listePuissance.add(pProche);
+            }
+            return listePuissance;
+        }
+    }
+
+    public int puissanceProche(int nb) {
+        int p2 = 1;
+        int i=0;
+
+        while(p2*2 < nb) {
+            p2 = p2*2;
+            i++;
+        }
+
+        if(p2*2 == nb) {
+            i = i+1;
+            return i;
+        }
+        else {
+            return i;
+        }
+    }
+
+
+
+
+
+
+
+    }
+
+
+
 }
