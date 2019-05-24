@@ -28,6 +28,14 @@ function str_to_noaccent($str)
     return ($url);
 }
 
+function erreur2($message)
+{
+    echo '<script language="JavaScript" type="text/javascript">';
+    echo "alert('".$message."');";
+    echo 'document.location="voir_top_producteurs.php";';
+    echo "</script>";
+}
+
 function erreur($message)
 {
     echo '<script language="JavaScript" type="text/javascript">';
@@ -116,7 +124,9 @@ if(isset($_POST["enregistrer"]))
     ////COPIE DU DRAPEAU DANS LE DOSSIER IMAGE
     $resultat = move_uploaded_file($_FILES['drapeau']['tmp_name'],"image/".$drapeauASave);
 
-    $results = $db->prepare("SELECT id from pays where nom = ?");
+    erreur2('Pays bien enregistré');
+
+    /*$results = $db->prepare("SELECT id from pays where nom = ?");
     if($results) {
         $array = array($paysASave);
         $results = $db->execute_prepared_query($array);
@@ -131,7 +141,7 @@ if(isset($_POST["enregistrer"]))
             curl_close($ch);
 
         }
-    }
+    }*/
 
 }
 

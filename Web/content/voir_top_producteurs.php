@@ -20,11 +20,7 @@ else {
     }
 
     $user = get_logged_user();
-    if($user && is_admin($user->get('id')))
-    {
-        echo '<input type="button" value="ajouter pays" onclick="ajouterPays()">';
-        echo '<input type="button" value="modifier pays" onclick="modifierPays()">';
-    }
+
 
     echo '<h1 class="title has-text-dark has-text-weight-bold" style="text-align:center; margin-bottom:2%;margin-top:2%;">Visualiser les 20 plus gros producteurs</h1>';
 

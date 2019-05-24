@@ -37,7 +37,7 @@ function addMarkers() {
             html += '<tr><td> Pourcentage d\' Arabica : </td><td>' + ((ListePaysBase[i].production_arabica/somme*100).toFixed(2))+'%</td></tr>' ;
             html += '<tr><td>  Pourcentage de Robusta : </td><td>' + ((ListePaysBase[i].production_robusta/somme*100).toFixed(2))+'%</td></tr>' ;
             html += '</table>';
-            var marker = L.marker([pays.latitude, pays.longitude], {icon: icon}).addTo(mymap)
+            var marker = L.marker([pays.latitude, pays.longitude]).addTo(mymap)
                 .bindPopup(html);
             console.log(marker);
 

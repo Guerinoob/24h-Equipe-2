@@ -3,7 +3,7 @@ include('../includes/utils_page.php');
 get_header();
 ?>
 
-<h1 class="title has-text-centered">À propos</h1>
+<h1 class="title has-text-centered" style="margin-top: 100px;">À propos</h1>
 
 <h2 class="subtitle has-text-centered">Justification de nos choix</h2>
 
