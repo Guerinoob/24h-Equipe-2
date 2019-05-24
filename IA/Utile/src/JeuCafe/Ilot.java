@@ -23,6 +23,7 @@ public class Ilot {
 
                 if (unit >=64) listeUnite[lig][col] = new Mer(lig, col);
                 else if (unit >= 32) listeUnite[lig][col] = new Foret(lig, col);
+                else listeUnite[lig][col] = new Terre(lig, col);
 
                 listeUnite[lig][col] = new Unite(lig, col);
                 // Si la case vaut 0 : elle est reliée aux autres cases
