@@ -33,26 +33,20 @@ public class Ilot {
     }
 
 
-    public static ArrayList<ArrayList<Integer>> convertirStringToInteger(String map) {
-        ArrayList<ArrayList<Integer>> matrice = new ArrayList<>(new ArrayList<>());
-        int ligne = -1, colonne = 0;
+    public static int[][] convertirStringToInteger(String map) {
+        int[][] matrice = new int[10][10];
+        int ligne = 0, colonne = 0;
         final String delims = "[:|]+";
         String[] valeurs = map.split(delims);
         for (String valeur : valeurs) {
 
-            if (ligne == -1 || colonne == 9) {
-                matrice.add(new ArrayList<>());
+            matrice[ligne][colonne] = Integer.parseInt(valeur);
+            System.out.println(ligne + ";" + colonne + ";" + matrice[ligne][colonne]);
+            colonne++;
+            if (colonne == 10) {
+                ligne++;
+                colonne = 0;
             }
-
-            ligne = matrice.size() - 1;
-
-            matrice.get(ligne).add(Integer.parseInt(valeur));
-
-            colonne = matrice.get(ligne).lastIndexOf(valeur);
-
-            System.out.println(ligne + ";" + colonne + ";" + matrice.size() +";"+ matrice.get(ligne).get(colonne));
-
-
         }
 
         return matrice;
@@ -105,4 +99,9 @@ public class Ilot {
             return i;
         }
     }
+
+    /*
+
+
+     */
 }
