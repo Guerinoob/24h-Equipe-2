@@ -2,6 +2,12 @@
 include_once('../includes/utils_page.php');
 get_header();
 
+if(isset($_GET['disconnect'])){
+    if(get_logged_user()){
+        disconnect_current_user();
+    }
+}
+
 if(isset($_POST['submit'])){
     $non_remplis = array();
 
