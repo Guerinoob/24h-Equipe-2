@@ -29,6 +29,10 @@
                 if($user){
                     if(is_exportateur($user->get('id'))){
                         ?>
+                        <a href="ajouter_variete.php.php" class="navbar-item">
+                            Ajouter une variété
+                        </a>
+
                         <a href="voir_commandes_exportateur.php" class="navbar-item">
                             Voir les commandes
                         </a>
