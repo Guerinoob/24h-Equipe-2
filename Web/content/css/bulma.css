@@ -4692,8 +4692,8 @@ fieldset[disabled] .select select:hover {
 }
 
 .progress:indeterminate {
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-name: moveIndeterminate;
