@@ -117,6 +117,21 @@ public class Ilot {
             return i;
         }
     }
+    
+    public Unite[] unitesDeLaParcellePour(Unite unit)
+    {
+    	Unite[] listeUnit = new Unite[] {};
+    	int i=0;
+    	for(int j=0; j<listeUnit.length; j++)
+    	{
+    		if(listeUnit[j].getParcelle() == unit.getParcelle())
+    		{
+    			listeUnit[i] = listeUnit[j];
+    			i++;
+    		}
+    	}
+    	return listeUnit;
+    }
 
     /*
 
