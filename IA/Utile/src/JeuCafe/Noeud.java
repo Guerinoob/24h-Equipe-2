@@ -7,7 +7,6 @@ public class Noeud {
     ArrayList<Noeud> enfants  = new ArrayList<>();
     Noeud pere;
     Couleur couleur;
-    boolean gagnant ;
     int colonne ;
     int ligne ;
     Ilot ilot;//coup déja fait
@@ -18,7 +17,13 @@ public class Noeud {
     //
     //getScore()
 
-
+    public Noeud(int ligne, int colonne, Couleur couleur, Ilot ilot, int profondeur){
+        this.ligne = ligne;
+        this.colonne = colonne;
+        this.couleur = couleur;
+        this.ilot = ilot;
+        this.profondeur = profondeur;
+    }
 
 
     public void genererFils(){
@@ -51,6 +56,32 @@ public class Noeud {
             enfants.add(n);
         }
         */
+
+
+        for(String move : this.ilot.getAllMoves()){
+            Ilot new_ilot = new Ilot(this.ilot);
+            new_ilot.jouer(move);
+
+            char colonneChar = move.split(":")[0].charAt(0);
+            String ligneString = move.split(":")[1];
+
+            int ligne = colonneChar - 'A';
+            int colonne = Integer.parseInt(ligneString);
+
+            Noeud n;
+            Couleur coul;
+
+            if(couleur == Couleur.BLANC)
+                coul = Couleur.NOIR;
+            else
+                coul = Couleur.BLANC;
+
+            n = new Noeud(ligne, colonne, coul, new_ilot, profondeur+1);
+            n.pere = this;
+
+            enfants.add(n);
+        }
+
     }
     public LinkedList<String> listOfMove(){
         /*LinkedList<String> move = new LinkedList<>();
@@ -64,6 +95,9 @@ public class Noeud {
         return null;
     }
 
+    public int getScore(){
+        return 0;
+    }
 
 }
 
