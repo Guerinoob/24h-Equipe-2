@@ -188,7 +188,7 @@ if(isset($_POST['idPays']))
             <h1 class="title is-1" style="text-align: center; margin-bottom : 50px">Modification du pays</h1>
             <div class="columns">
                 <div class="column is-3 is-offset-3">
-                    <form action="modifierPays.php" method="post" enctype="multipart/form-data">
+                    <form action="voir_top_producteurs.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="idPays" value="<?php echo $idPays; ?>">
                         <div class="field">
                             <label class="label">Nom du pays :</label>

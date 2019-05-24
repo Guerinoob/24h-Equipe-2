@@ -137,7 +137,7 @@ if(isset($_POST["enregistrer"]))
         <h1 class="title is-1" style="text-align: center; margin-bottom : 50px">Ajout d'un pays</h1>
         <div class="columns">
             <div class="column is-3 is-offset-3">
-                <form action="ajoutPays.php" method="post" enctype="multipart/form-data">
+                <form action="voir_top_producteurs.php" method="post" enctype="multipart/form-data">
 
 
 
