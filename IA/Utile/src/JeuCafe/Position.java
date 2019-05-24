@@ -10,9 +10,9 @@ public class Position {
     /**
      * Default constructor
      */
-    public Position(int ligne, int col) {
+    public Position(int ligne, int colonne) {
         this.ligne = ligne;
-        this.colonne = col;
+        this.colonne = colonne;
     }
 
 

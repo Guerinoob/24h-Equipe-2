@@ -1,4 +1,5 @@
 package JeuCafe;
+
 import java.util.*;
 
 /**
@@ -6,29 +7,36 @@ import java.util.*;
  */
 public class Ilot {
 
-    private ArrayList<Parcelle> listeParcelle;
+    private Unite[][] listeUnite;
 
 
     /**
      * @param code
      */
-    public Ilot(ArrayList<ArrayList<Integer>> code) {
-        listeParcelle = new ArrayList<>();
-        int lig = 0, parcelle = 0;
-        int col = 0;
+    public Ilot(int[][] code) {
+        listeUnite = new Unite[10][10];
+        int lig = 0, col, parcelle = 0;
         ArrayList<Integer> Case;
-        for (ArrayList<Integer> ligne : code) {
+        for (int[] ligne : code) {
             col = 0;
             for (Integer unit : ligne) {
-            	//Si ce n'est pas une mer ni une foret
-                Case = dechiffreEnPuissanceDeDeux(unit);
-                if (Case.get(col) == 0) {
-                    listeParcelle.add(new Parcelle());
-                    listeParcelle.get(parcelle).getListeUnite().add(new Unite(lig, col));
+
+                if (unit >=64) listeUnite[lig][col] = new Mer(lig, col);
+                else if (unit >= 32) listeUnite[lig][col] = new Foret(lig, col);
+
+                listeUnite[lig][col] = new Unite(lig, col);
+                // Si la case vaut 0 : elle est reliée aux autres cases
+                if (unit == 0) {
+                    listeUnite[lig][col].setParcelle(listeUnite[lig][col-1].getParcelle());
                 }
-                else if (Case.get(col) == 1)
-                {
-                	
+                // Sinon si
+                else {
+                    Case = dechiffreEnPuissanceDeDeux(unit);
+                    if (Case.get(2)!=null){
+                        if (Case.get(3)!=null){
+                            listeUnite.get(lig).get(col).setParcelle(new Parcelle())
+                        }
+                    }
                 }
                 col++;
             }
