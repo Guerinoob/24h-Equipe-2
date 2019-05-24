@@ -33,13 +33,7 @@ if($user){
                             if($db->execute_prepared_query($args)){
                                 echo 'La commande a été passée !';
 
-                                $req_change_stock = "UPDATE varietes SET stock = stock - ? WHERE id_type_cafe = ? AND id_pays = ? AND id_exportateur = ?";
-                                $args = array($quantite, $type_cafe, $pays, $exportateur);
 
-                                $db->prepare($req_change_stock);
-                                if(!$db->execute_prepared_query($args)){
-                                    echo 'Erreur changement stock';
-                                }
                             }
                             else{
                                 echo 'Erreur execute';
