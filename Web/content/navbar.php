@@ -29,7 +29,7 @@
                 if($user){
                     if(is_exportateur($user->get('id'))){
                         ?>
-                        <a href="ajouter_variete.php.php" class="navbar-item">
+                        <a href="ajouter_variete.php" class="navbar-item">
                             Ajouter une variété
                         </a>
 
