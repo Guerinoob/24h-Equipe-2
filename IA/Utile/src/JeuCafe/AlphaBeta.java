@@ -2,6 +2,7 @@ package JeuCafe;
 import java.util.LinkedList;
 
 public class AlphaBeta {
+    public static int PRONFONDEUR_MAX = 0;
     public  AlphaBeta(){
         //Mets beaucoup pour s'éxécuter dans le cas d'une taille supérieure à 5
         //LJ: Normal car l'arbre de recherche est immense !

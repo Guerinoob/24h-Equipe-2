@@ -8,8 +8,16 @@ public class Noeud {
     Noeud pere;
     Couleur couleur;
     boolean gagnant ;
-    int colonne;
-    int ligne;
+    int colonne ;
+    int ligne ;
+    Ilot ilot;//coup déja fait
+    int profondeur;
+    //Dans Ilot -> Calculer les points des Joueurs
+    //          -> Les coups à jouer
+    //          ->Savoir si Partie Terminé
+    //
+    //getScore()
+
 
 
 
