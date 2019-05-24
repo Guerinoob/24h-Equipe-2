@@ -10518,7 +10518,7 @@ label.panel-block:hover {
 }
 
 .footer {
-  border-top: medium outset yellow;
+  border-top: 4px outset #ffd324;
   background-color: #fafafa;
   padding: 1rem 1.5rem 1.5rem;
 }
