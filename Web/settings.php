@@ -3,7 +3,7 @@
 ini_set('display_errors','off');
 
 define('DB_USER', 'root');
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'root');
 define('DB_HOST', 'localhost');
 define('DB_NAME', '24h');
 
