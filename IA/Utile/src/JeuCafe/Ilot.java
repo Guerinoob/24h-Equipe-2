@@ -44,16 +44,20 @@ public class Ilot {
     public Ilot(ArrayList<ArrayList<Integer>> code) {
         listeParcelle = new ArrayList<>();
         int lig = 0, parcelle = 0;
-        char col = 'A';
+        int col = 0;
         ArrayList<Integer> Case;
         for (ArrayList<Integer> ligne : code) {
             col = 0;
             for (Integer unit : ligne) {
+            	//Si ce n'est pas une mer ni une foret
                 Case = dechiffreEnPuissanceDeDeux(unit);
-                if (Case.get(0) == 0) {
+                if (Case.get(col) == 0) {
                     listeParcelle.add(new Parcelle());
                     listeParcelle.get(parcelle).getListeUnite().add(new Unite(lig, col));
-
+                }
+                else if (Case.get(col) == 1)
+                {
+                	
                 }
                 col++;
             }

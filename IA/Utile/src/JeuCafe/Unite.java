@@ -11,7 +11,7 @@ public class Unite {
     /**
      * Default constructor
      */
-    public Unite(int lig, char col) {
+    public Unite(int lig, int col) {
         this.position = new Position(lig, col);
     }
 
