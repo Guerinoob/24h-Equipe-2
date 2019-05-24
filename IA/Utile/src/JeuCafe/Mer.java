@@ -3,12 +3,13 @@ package JeuCafe;
 /**
  * 
  */
-//public class Mer extends Unite {
+public class Mer extends Unite {
 
     /**
      * Default constructor
      */
-    //public Mer() {
-    //}
+    public Mer(int lig, int col) {
+        super(lig, col);
+    }
 
-//}
+}

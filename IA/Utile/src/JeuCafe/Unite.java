@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Unite {
+public abstract class Unite {
 
     private Position position;
     private Parcelle parcelle;
@@ -17,11 +17,17 @@ public class Unite {
     }
 
 
-
     /**
      * 
      */
 
+    public Parcelle getParcelle(){
+        return this.parcelle;
+    }
+
+    public void setParcelle(Parcelle parcelle){
+        this.parcelle=parcelle;
+    }
 
     /**
      * @return
