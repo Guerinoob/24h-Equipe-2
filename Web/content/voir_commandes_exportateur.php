@@ -20,6 +20,25 @@ if($user){
 
             if($db->execute_prepared_query($args)){
                 echo 'Commande mise à jour !';
+
+                if($nouvel_etat == 5){
+                    $req = "SELECT * FROM commandes WHERE id = ?";
+                    $args = array($commande);
+
+                    $db->prepare($req);
+                    $ligne = $db->execute_prepared_query($req)[0];
+
+                    $quantite = $ligne['quantite'];
+                    $type_cafe = $ligne['id_type_cafe'];
+                    $exportateur = $ligne['exportateur'];
+                    $pays = $ligne['id_pays'];
+
+                    $req = "UPDATE varietes SET stock = stock - ? WHERE id_exportateur = ? AND id_type_cafe = ? AND id_pays = ?";
+                    $args = array($quantite, $exportateur, $type_cafe, $pays);
+
+                    $db->prepare($req);
+                    $db->execute_prepared_query($args);
+                }
             } else{
                 echo 'Erreur lors de la mise à jour !';
             }
