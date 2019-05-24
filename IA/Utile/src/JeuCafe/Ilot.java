@@ -16,7 +16,7 @@ public class Ilot {
     public Ilot(int[][] code) {
         listeUnite = new Unite[10][10];
         int lig = 0, col, parcelle = 0;
-        ArrayList<Integer> Case;
+        int[] Case;
         for (int[] ligne : code) {
             col = 0;
             for (Integer unit : ligne) {
@@ -25,7 +25,6 @@ public class Ilot {
                 else if (unit >= 32) listeUnite[lig][col] = new Foret(lig, col);
                 else listeUnite[lig][col] = new Terre(lig, col);
 
-                listeUnite[lig][col] = new Unite(lig, col);
                 // Si la case vaut 0 : elle est reliée aux autres cases
                 if (unit == 0) {
                     listeUnite[lig][col].setParcelle(listeUnite[lig][col-1].getParcelle());
@@ -33,10 +32,16 @@ public class Ilot {
                 // Sinon si
                 else {
                     Case = dechiffreEnPuissanceDeDeux(unit);
-                    if (Case.get(2)!=null){
-                        if (Case.get(3)!=null){
-                            listeUnite.get(lig).get(col).setParcelle(new Parcelle())
+                    if (Case[2]!=-1){
+                        if (Case[3]!=-1){
+                            listeUnite[lig][col].setParcelle(new Parcelle());
                         }
+                        else {
+                            listeUnite[lig][col].setParcelle(listeUnite[lig-1][col].getParcelle());
+                        }
+                    }
+                    else {
+                        listeUnite[lig][col].setParcelle(listeUnite[lig][col-1].getParcelle());
                     }
                 }
                 col++;
