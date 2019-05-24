@@ -45,9 +45,9 @@ if($user){
 
         ?>
 
-        <h1>Visualiser vos commandes</h1>
+        <h1 class="title has-text-dark has-text-weight-bold" style="text-align:center; margin-bottom:2%;margin-top:2%;">Visualiser vos commandes</h1>
 
-        <table>
+        <table class="table is-bordered is-striped is-narrow" style="margin: auto; margin-bottom : 2%;">
             <thead>
                 <th>Type de café</th>
                 <th>Provenance</th>
@@ -73,13 +73,13 @@ if($user){
                             echo '<form method="POST" action="">';
                                 echo '<input type="text" id="commande" name="commande" value="'.$commande['id'].'" hidden />';
 
-                                echo '<select name="etat" id="etat">';
+                                echo '<div class="select" style="margin-right:1px; "><select name="etat" id="etat">';
                                     foreach($etats as $etat){
                                         echo '<option value="'.$etat['id'].'" '.($commande['etat_id'] == $etat['id'] ? "selected" : " " ).'>'.$etat['nom'].'</option>';
                                     }
-                                echo '</select>';
+                                echo '</select> </div>';
 
-                                echo '<input type="submit" id="submit" name="submit" value="Mettre à jour" />';
+                                echo '<input class="button is-dark" type="submit" id="submit" name="submit" value="Mettre à jour" />';
                             echo '</form>';
                         echo '</td>';
                     echo '</tr>';

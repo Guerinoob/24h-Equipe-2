@@ -28,9 +28,9 @@ if($user){
 
         ?>
 
-        <h1>Visualiser vos commandes</h1>
+        <h1 class="title has-text-dark has-text-weight-bold" style="text-align:center; margin-bottom:2%;margin-top:2%;">Visualiser vos commandes</h1>
 
-        <table>
+        <table class="table is-bordered is-striped is-narrow" style="margin: auto; margin-bottom : 2%;">
             <thead>
             <th>Type de café</th>
             <th>Provenance</th>

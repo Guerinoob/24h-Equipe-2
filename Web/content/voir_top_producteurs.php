@@ -26,20 +26,21 @@ else {
         echo '<input type="button" value="modifier pays" onclick="modifierPays()">';
     }
 
-    echo '<h1 class="title has-text-info has-text-weight-bold">Visualiser les 20 plus gros producteurs</h1>';
+    echo '<h1 class="title has-text-dark has-text-weight-bold" style="text-align:center; margin-bottom:2%;margin-top:2%;">Visualiser les 20 plus gros producteurs</h1>';
 
-    echo '<table>';
-        echo '<thead>';
-            echo '<th></th>';
-            echo '<th>Pays</th>';
-            echo '<th>Description</th>';
-            echo '<th>Capitale</th>';
-            echo '<th>Nombre d\'habitants</th>';
-            echo '<th>Surface du pays</th>';
-            echo '<th colspan="2">Production en 2013</th>';
+    echo '<table class="table is-bordered is-striped is-narrow " style="margin: auto; margin-bottom: 2%;">';
+        echo '<thead class="thead">';
+            echo '<th class="th"></th>';
+            echo '<th class="th">Pays</th>';
+            echo '<th class="th">Description</th>';
+            echo '<th class="th">Capitale</th>';
+            echo '<th class="th">Nombre d\'habitants</th>';
+            echo '<th class="th">Surface du pays</th>';
+            echo '<th class="th" colspan="2">Production en 2013</th>';
+            echo '<th class="th" colspan="2">Pourcentage de production</th>';
         echo '</thead>';
 
-        echo '<tbody>';
+        echo '<tbody class="tbody">';
             $classement = 1;
 
             foreach($results as $pays){
@@ -48,16 +49,16 @@ else {
 
                 if($classement > 20) break;
 
-                echo '<tr>';
+                echo '<tr class="tr">';
 
-                    echo '<td>'.$classement.'</td>';
-                    echo '<td><img src="images/'.$pays['drapeau'].'" width="30px" height="30px" /> '.$pays['nom'].'</td>';
-                    echo '<td>'.$pays['description'].'</td>';
-                    echo '<td>'.$pays['capitale'].'</td>';
-                    echo '<td>'.$pays['nb_habitants'].'</td>';
-                    echo '<td>'.$pays['surface'].'</td>';
-                    echo '<td colspan="2">'.$production.'</td>';
-                    echo '<td colspan="2">'.(($production/$prod_totale) * 100).'%</td>';
+                    echo '<td class="th">'.$classement.'</td>';
+                    echo '<td class="th"><img src="images/'.$pays['drapeau'].'" width="30px" height="30px" /> '.$pays['nom'].'</td>';
+                    echo '<td class="th">'.$pays['description'].'</td>';
+                    echo '<td class="th">'.$pays['capitale'].'</td>';
+                    echo '<td class="th">'.$pays['nb_habitants'].'</td>';
+                    echo '<td class="th">'.$pays['surface'].'</td>';
+                    echo '<td class="th" colspan="2">'.$production.'</td>';
+                    echo '<td class="th" colspan="2">'.(($production/$prod_totale) * 100).'%</td>';
 
                 echo '</tr>';
                 $classement++;
