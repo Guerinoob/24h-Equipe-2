@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -13,8 +12,8 @@ public class Noeud {
 
 
     public void genererFils(){
-        try {
-            if(gagnant )
+        /*try {
+            if(gagnant)
                 return;
             Board base = new Board(plateau);
             for (String s:base.getAllMoves()) {
@@ -41,16 +40,18 @@ public class Noeud {
             n.joue = "RIEN";
             enfants.add(n);
         }
-
+        */
     }
     public LinkedList<String> listOfMove(){
-        LinkedList<String> move = new LinkedList<>();
+        /*LinkedList<String> move = new LinkedList<>();
         if(pere != null && pere.pere != null ) {
             move.addAll(pere.listOfMove()); //LJ: Hmm... Vous remontez récursivement l'arbre pour construire la liste des coups en redescendant... ok !
         }
         System.out.println("Le joueur "+ joueur + " joue en "+joue);
         move.add(this.joue);
         return move;
+        */
+        return null;
     }
 
 

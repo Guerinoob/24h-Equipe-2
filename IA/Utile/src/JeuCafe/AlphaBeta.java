@@ -1,6 +1,37 @@
+import java.util.LinkedList;
 
 public class AlphaBeta {
-    
+    public  AlphaBeta(){
+        //Mets beaucoup pour s'éxécuter dans le cas d'une taille supérieure à 5
+        //LJ: Normal car l'arbre de recherche est immense !
+        /*Game game = new Game(new StupidPlayer("StupidOne"), new StupidPlayer("StupidTwo"),6);
+        Noeud debut = new Noeud(game.game,null,2,false);
+        LinkedList<String> moves;
+        String joue;
+        do {
+            debut =  maxAmeliore(debut, -2).noeud;
+            joue = debut.joue;
+            if(joue != null) { //Quand un joueur est bloqué il retroune null comme coup qu'il peut jouer on vérifie donc que ce n'est pas le cas
+                moves = debut.listOfMove();
+                for (String s : moves) {
+                    if (s != null) {
+                        game.game.playMove(s); //LJ: Qui affrontez-vous ?
+                        // On fait jouer deux IA entre elle pour s'assureer que le min max fonctionne bien à noter qu'il faudrait rajouter une heuristique pour explorer moins de branche et que la profondeur à déjà
+                        //été ajouté dans le cas d'un IA VS Joueur on fait jouer le joueur on explore sur 10 de profondeur on joue un coup on laisse le joueur jouer et on recommence avec 10 coup d'avance on peut supposer qu'on va gagner très
+                        //souvent contre le joueur
+
+                        //LJ: Attention, faire s'affronter deux IA est très différent de faire jouer une IA contre elle-même... (sauf si la stratégie est vraiment optimale bien sûr)
+                        //LJ: => Il est bien plus intéressant d'opposer par exemple votre MinMAx à votre AlphaBeta... Voire à changer d'heuristique !
+                        game.game.print();
+                    }
+                }
+
+                debut = new Noeud(game.game, null, debut.joueur, debut.gagnant);
+            }
+        }while (game.game.getWinner() == null &&  joue != null );
+        */
+
+    }
     public static Duo maxAmeliore(Noeud n,int actuel){
         n.genererFils();
         if(n.gagnant){
