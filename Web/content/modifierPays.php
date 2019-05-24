@@ -130,9 +130,12 @@
             $results = $db->execute_prepared_query($array);
             if ($results) {
                 $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, "http://localhost/24h/24h-Equipe-2/Web/content/createIcon?pays=".$results[0]["id"].".php");
+                $dir = preg_replace('/ajoutPays.php/', '', $_SERVER["PHP_SELF"], 1);
+                $path = $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["SERVER_NAME"].$dir;
+                curl_setopt($ch, CURLOPT_URL, $path."createIcon?pays=".$results[0]["id"].".php");
                 curl_setopt($ch, CURLOPT_HEADER, 1);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_exec($ch);
                 curl_close($ch);
             }
         }
