@@ -146,33 +146,41 @@
 
 ?>
 
-<form class="dropdown" action="modifierPays.php" method="post" enctype="multipart/form-data" id="formAfficherModif">
+
+
+<form action="modifierPays.php" method="post" enctype="multipart/form-data" id="formAfficherModif">
     <input type="hidden" name="idPays" id="idPays">
 </form>
 
-<select id="pays">
-    <option value="0">-- Selectionner un pays --</option>
-    <?php
-    foreach($tabPays as $pays)
-    {
-        if(isset($_POST['idPays']))
-        {
-            if($pays['id'] == $_POST['idPays'])
-            {
-                echo "<option value='".$pays['id']."' selected>".$pays['nom']."</option>";
-            }
-            else
-            {
-                echo "<option value='".$pays['id']."'>".$pays['nom']."</option>";
-            }
-        }
-        else
-        {
-            echo "<option value='".$pays['id']."'>".$pays['nom']."</option>";
-        }
-    }
-    ?>
-</select>
+<div class="field column is-4 is-offset-4 is-fullwidth">
+    <div class="control">
+        <div class="select is-warning">
+            <select id="pays" class="is-fullwidth">
+                <option value="0">-- Selectionner un pays --</option>
+                <?php
+                foreach($tabPays as $pays)
+                {
+                    if(isset($_POST['idPays']))
+                    {
+                        if($pays['id'] == $_POST['idPays'])
+                        {
+                            echo "<option value='".$pays['id']."' selected>".$pays['nom']."</option>";
+                        }
+                        else
+                        {
+                            echo "<option value='".$pays['id']."'>".$pays['nom']."</option>";
+                        }
+                    }
+                    else
+                    {
+                        echo "<option value='".$pays['id']."'>".$pays['nom']."</option>";
+                    }
+                }
+                ?>
+            </select>
+        </div>
+    </div>
+</div>
 
 <?php
 if(isset($_POST['idPays']))
