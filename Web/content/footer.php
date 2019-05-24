@@ -1,7 +1,7 @@
         </div>
 
     </body>
-        <footer class="footer has-background-grey-dark has-text-white" >
+        <footer class="footer has-background-grey-dark has-text-white" style="margin-top: 100px;">
             <div class="columns">
                 <div class="column has-text-centered is-2 is-italic">
                     2019&copy; Equipe Caen 2 : Unnamed
