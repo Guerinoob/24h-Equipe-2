@@ -134,6 +134,7 @@ if(isset($_POST['submit'])){
                                         </label>
                                     </div>
                                 </div>
+                            </div>
                             <div class="field is-horizontal">
                                 <div class="field-body">
                                     <div class="field is-expanded">
