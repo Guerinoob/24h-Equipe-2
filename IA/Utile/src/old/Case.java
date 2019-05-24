@@ -1,3 +1,5 @@
+package old;
+
 public class Case {
     private int colonne;
     private int ligne;
@@ -14,7 +16,7 @@ public class Case {
 
     @Override
     public String toString() {
-        return "Case{" +
+        return "old.Case{" +
                 "colonne=" + colonne +
                 ", ligne=" + ligne +
                 ", contenu='" + contenu + '\'' +

@@ -1,3 +1,5 @@
+package old;
+
 import java.util.ArrayList;
 
 /**
@@ -25,7 +27,7 @@ public enum Direction {
      */
     public int getColonne() { return colonne; }
     /**
-     * Permet à partir des coordonnées de retrouver la Direction emprunter
+     * Permet à partir des coordonnées de retrouver la old.Direction emprunter
      * @param ligne
      * @param colonne
      * @return

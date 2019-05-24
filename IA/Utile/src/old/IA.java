@@ -1,3 +1,5 @@
+package old;
+
 import java.util.*;
 
 public class IA {
@@ -21,13 +23,13 @@ public class IA {
             Noeud depart = new Noeud(positionJoueur.getColonne(), positionJoueur.getLigne());
             Noeud arrive = new Noeud(piece.getColonne(), piece.getLigne());
             AEtoile aEtoile = new AEtoile(depart, arrive, plateau);
-            Noeud solution = aEtoile.resoudre();//On calcul la distance grâce a AEtoile
+            Noeud solution = aEtoile.resoudre();//On calcul la distance grâce a old.AEtoile
             distances.put(piece, solution.getProfondeur());
 
         }
         return distances;
     }
-    //Début d'une tentative d'IA
+    //Début d'une tentative d'old.IA
     public void test() {
         ArrayList<HashMap<Case, Integer>> listeMaps = new ArrayList<>();//Pour chaque Joueurs on voit leurs écarts vis à vis des pièces
         for (Case joueur : joueurs) {

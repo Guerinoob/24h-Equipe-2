@@ -1,60 +1,49 @@
-
+package JeuCafe;
 import java.util.*;
 
 /**
  * 
  */
 public class Position {
-
+    private int ligne;
+    private char colonne;
     /**
      * Default constructor
      */
-    public Position() {
+    public Position(int ligne, char colonne) {
+        this.ligne = ligne;
+        this.colonne = colonne;
     }
-
-    /**
-     * 
-     */
-    private int colonne;
-
-    /**
-     * 
-     */
-    private int ligne;
 
 
     /**
      * @return
      */
     public int getLigne() {
-        // TODO implement here
-        return 0;
+        return this.ligne;
     }
 
     /**
      * @return
      */
-    public int getColonne() {
-        // TODO implement here
-        return 0;
+    public char getColonne() {
+        return this.colonne;
     }
 
     /**
-     * @param int 
+     * @param ligne
      * @return
      */
-    public void setLigne(void int) {
-        // TODO implement here
-        return null;
+    public void setLigne(int ligne) {
+        this.ligne = ligne;
     }
 
     /**
-     * @param int 
+     * @param colonne
      * @return
      */
-    public void setColonne(void int) {
-        // TODO implement here
-        return null;
+    public void setColonne(char colonne) {
+        this.colonne = colonne;
     }
 
 }

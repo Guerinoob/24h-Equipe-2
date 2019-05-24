@@ -1,4 +1,4 @@
-
+package JeuCafe;
 import java.util.*;
 
 /**
@@ -6,10 +6,16 @@ import java.util.*;
  */
 public class Ilot {
 
-    /**
-     * Default constructor
-     */
-    public Ilot() {
+    public Ilot(String map) {
+        ArrayList<ArrayList<String>> matrice = new ArrayList<>(new ArrayList<>());
+        int i = 0;
+        final String delims = "[:|]+";
+        String[] valeurs = map.split(delims);
+        for (String valeur : valeurs) {
+            if (matrice.get(i).get(matrice.get(i).indexOf(valeur)).equals("|"))
+                i++;
+            matrice.get(i).add(valeur);
+        }
     }
 
 

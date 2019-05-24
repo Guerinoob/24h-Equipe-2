@@ -1,3 +1,5 @@
+package old;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -46,7 +48,7 @@ public class Noeud {
     }
 
     /**
-     * Calcul l'heuristique d'un Noeud en se basant sur la distance de Manhattan
+     * Calcul l'heuristique d'un old.Noeud en se basant sur la distance de Manhattan
      * @param objectif
      */
     public void calculHeuristique(Noeud objectif) {
@@ -56,7 +58,7 @@ public class Noeud {
 
     @Override
     public String toString() {
-        return "Noeud{" +
+        return "old.Noeud{" +
                 "colonne=" + colonne +
                 ", ligne=" + ligne +
                 ", heuristique=" + heuristique +
@@ -64,7 +66,7 @@ public class Noeud {
     }
 
     /**
-     * Génère tous les enfants d'un Noeud c'est à dire tous les endroits ou on peut aller à partir de ce Noeud
+     * Génère tous les enfants d'un old.Noeud c'est à dire tous les endroits ou on peut aller à partir de ce old.Noeud
      * @param plateau
      */
     public void genererEnfants(Plateau plateau) {
@@ -86,7 +88,7 @@ public class Noeud {
 
     /**
      *  Calcule le chemin pour aller de son Adam à lui
-     * @return La liste des Directions à effectuer pour aller du Noeud actuel à son plus lointain ancêtre
+     * @return La liste des Directions à effectuer pour aller du old.Noeud actuel à son plus lointain ancêtre
      */
     public LinkedList<Direction> retournerLeChemin(){
         Noeud suivant = this;
