@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Unite {
+public abstract class Unite {
 
     private Position position;
 
