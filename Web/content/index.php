@@ -18,7 +18,6 @@ if(isset($_POST['logout'])){
             <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
             <link rel="stylesheet" href="bulma.css">
             <link rel="stylesheet" href="login.css">
-            <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"> -->
             <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
         </head>
         <body>
@@ -112,9 +111,11 @@ if(isset($_POST['logout'])){
                     La saveur du Robusta est relevé, plus amère et plus corsée que celle du café Arabica. Sa teneur en caféine en est plus importante (de 2% à 2,5%).
                     Ce café est principalement cultivé en Afrique de l'Ouest et en Asie du Sud-Est.
                 </p>
+                <img alt ="image robusta" src="image/robusta.png">
             </div>
             <div class="column">
                 <h2 class="has-text-right subtitle"> L'Arabica</h2>
+                <img alt ="image arabica" src="image/arabica.png">
                 <p class="has-text-justified">
                     <b>L’Arabica</b> est l’espèce de caféier le plus répandu au monde, représentant pas moins de 65% de la production mondiale de café.
                     Il tient son nom de la péninsule arabique car c’est au Yemen que le café Arabica a été consommé et dégusté pour la première fois en tant que boisson.
