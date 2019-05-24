@@ -17,7 +17,7 @@ public class Main {
         try {
             ClientUDP udp = new ClientUDP();
             udp.connect("172.16.97.13", 8001);
-            udp.send("#Caen2");
+            udp.send("Caen2");
 
             System.out.println(udp.receive());
 
