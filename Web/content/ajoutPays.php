@@ -125,94 +125,101 @@ if(isset($_POST["enregistrer"]))
 
 
 ?>
-<form action="ajoutPays.php" method="post" enctype="multipart/form-data">
-    <fieldset>
-        <legend>Ajout d'un pays</legend>
-        <table>
-            <tr>
-                <td>
-                    Nom du pays :
-                </td>
-                <td>
-                    <input type="text" name="pays" placeholder="France" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Description :
-                </td>
-                <td>
-                    <textarea name="description" rows="5" placeholder="Ce pays possède beaucoup d'informaticiens" required></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Drapeau :
-                </td>
-                <td>
-                    <input type="file" name="drapeau">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Capitale :
-                </td>
-                <td>
-                    <input type="text" name="capitale" placeholder="Paris" required>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <fieldset>
-                        <legend>En 2013</legend>
-                        <table>
-                            <tr>
-                                <td>
-                                    Nombre d'habitants :
-                                </td>
-                                <td>
-                                    <input type="number" name="nbhabitants" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    surface du pays :
-                                </td>
-                                <td>
-                                    <input type="number" name="surface" required> km²
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    quantité de café produit (arabica) :
-                                </td>
-                                <td>
-                                    <input type="number" name="quantiteArabica" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    quantité de café produit (robusta) :
-                                </td>
-                                <td>
-                                    <input type="number" name="quantiteRobusta" required>
-                                </td>
-                            </tr>
-                        </table>
-                    </fieldset>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="reset" value="Réinitialiser">
-                </td>
-                <td>
-                    <input type="submit" name="enregistrer" value="Enregistrer">
-                </td>
-            </tr>
-        </table>
-    </fieldset>
-</form>
+    <div class="container">
+        <h1 class="title is-1" style="text-align: center; margin-bottom : 50px">Ajout d'un pays</h1>
+        <div class="columns">
+            <div class="column is-3 is-offset-3">
+                <form action="ajoutPays.php" method="post" enctype="multipart/form-data">
+
+
+
+                    <div class="field">
+                        <label class="label">Nom du pays :</label>
+                        <p class="control has-icons-left">
+                            <input class="input" type="text" name="pays" placeholder="France" required>
+                            <span class="icon is-small is-left">
+                    <i class="fas fa-globe"></i>
+                </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Description : </label>
+                        <div class="control has-icons-left">
+                            <textarea name="description" class="textarea" placeholder="     Ce pays possède beaucoup d'informaticiens"></textarea>
+
+                            <span class="icon has-text-info">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                        </div>
+                    </div>
+                    <p class="label">Drapeau</p>
+                    <div class="file">
+                        <label class="file-label">
+                            <input class="file-input" type="file" name="drapeau">
+                            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choisissez un fichier...
+              </span>
+            </span>
+                        </label>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Capitale : </label>
+                        <div class="control">
+                            <input class="input" type="text" name="capitale" placeholder="Paris" required>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="column is-3 is-offset-1">
+                <h3 class="title is-4">En 2013 : </h3>
+                <div class="field">
+                    <label class="label">Nombre d'habitants : </label>
+                    <div class="control">
+                        <input class="input" type="number" name="nbhabitants" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Surface du pays: </label>
+                    <div class="control">
+                        <input class="input" type="number" name="surface" placeholder="km²" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Quantité de café produit (arabica) : </label>
+                    <div class="control">
+                        <input class="input" type="number" name="quantiteArabica" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">quantité de café produit (robusta) : </label>
+                    <div class="control">
+                        <input class="input" type="number" name="quantiteRobusta" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-grouped" style="margin-left: 30%;">
+            <div class="control">
+                <input class="button is-text" type="reset" value="Réinitialiser">
+            </div>
+            <div class="control">
+                <input class="button is-link" type="submit" name="enregistrer" value="Enregistrer">
+            </div>
+        </div>
+
+        </form>
+    </div>
+
 <?php
 get_footer();
 ?>
