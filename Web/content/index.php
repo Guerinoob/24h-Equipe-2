@@ -136,7 +136,7 @@ if(isset($_POST['logout'])){
                 Ici, vous trouverez des exportateurs pouvant satisfaire les goûts de tous et toutes.
             </p>
             <a href="voir_top_producteurs.php">
-            <button class="button is-block is-info is-fullwidth has-text-weight-medium" onclick="voir_top_producteurs.php">Voir nos exportateurs</button>
+            <button class="button is-block is-warning is-fullwidth has-text-weight-medium" onclick="voir_top_producteurs.php">Voir nos exportateurs</button>
             </a>
         </div>
     </section>
