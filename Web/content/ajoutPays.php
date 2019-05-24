@@ -156,12 +156,12 @@ if(isset($_POST["enregistrer"]))
                     <p class="label">Drapeau</p>
                     <div class="file">
                         <label class="file-label">
-                            <input class="file-input" type="file" name="drapeau">
+                            <input class="file-input" type="file" id="file" name="drapeau">
                             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-upload"></i>
               </span>
-              <span class="file-label">
+            <span id="nomFichier" class="file-label">
                 Choisissez un fichier...
               </span>
             </span>
@@ -219,7 +219,18 @@ if(isset($_POST["enregistrer"]))
 
         </form>
     </div>
+<script>
+    var file = document.getElementById('file');
 
+    var changenom = function()
+    {
+        var tab=file.value.split('\\');
+        var nomFichier = document.getElementById('nomFichier');
+        nomFichier.innerHTML = tab[2];
+    }
+
+    file.addEventListener('change', changenom, false);
+</script>
 <?php
 get_footer();
 ?>

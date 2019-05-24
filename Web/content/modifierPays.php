@@ -72,14 +72,24 @@
             erreur('Pas de quantite pour robusta');
         }
 
-        ////RECUPERATION EXTENSION
-        $tabExt = explode('.',$_FILES['drapeau']['name']);
 
         ////ATTRIBUTION DES VARIOABLE EN ENLVANT LES ACCENTS
         $id = $_POST['id'];
         $paysASave = str_to_noaccent($_POST["pays"]);
         $descriptionASave = str_to_noaccent($_POST["description"]);
-        $drapeauASave = str_to_noaccent(mb_strtolower($paysASave).".".$tabExt[1]);
+        ////RECUPERATION EXTENSION
+        if ($_FILES['drapeau']['error'] <= 0)
+        {
+            $tabExt = explode('.',$_FILES['drapeau']['name']);
+            $drapeauASave = str_to_noaccent(mb_strtolower($paysASave).".".$tabExt[1]);
+        }
+        else
+        {
+            $db->prepare("select drapeau from pays where id = ?");
+            $tableau = array($id);
+            $resTableauu = $db->execute_prepared_query($tableau);
+            $drapeauASave = $resTableauu[0]['drapeau'];
+        }
         $capitaleASave = str_to_noaccent($_POST["capitale"]);
         $nbhabitantsASave = str_to_noaccent($_POST["nbhabitants"]);
         $surfaceASave = str_to_noaccent($_POST["surface"]);
@@ -114,7 +124,7 @@
                             production_robusta = ?
                             where id = ?");
         $tableauAInserer = array($paysASave,$descriptionASave,$drapeauASave,$capitaleASave,$nbhabitantsASave,$surfaceASave,$quantiteArabicaASave,$quantiteRobustaASave,$id);
-        $bool =$db->execute_prepared_query($tableauAInserer);
+        $bool = $db->execute_prepared_query($tableauAInserer);
 
         ////COPIE DU DRAPEAU DANS LE DOSSIER IMAGE
         $resultat = move_uploaded_file($_FILES['drapeau']['tmp_name'],"image/".$drapeauASave);
