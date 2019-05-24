@@ -6,9 +6,7 @@
 
     $tabPays = $db->query_get_rows("select id,nom from pays");
 
-    $xmlfile = file_get_contents("https://sql.sh/ressources/sql-pays/sql-pays.xml");
-    $ob= simplexml_load_string($xmlfile);
-    $json  = json_encode($ob);
+    $json  = file_get_contents("js/traduction.json");
     $configData = json_decode($json, true);
 
     function str_to_noaccent($str)
@@ -96,15 +94,12 @@
         $quantiteArabicaASave = str_to_noaccent($_POST["quantiteArabica"]);
         $quantiteRobustaASave = str_to_noaccent($_POST["quantiteRobusta"]);
 
-        //verif pays
         $verif = 0;
-        for($index=0 ; $index<count($configData['database']['table']) ; $index++)
+        foreach($configData as $value)
         {
-            $pays = str_to_noaccent($configData['database']['table'][$index]['column'][4]);
-            if(mb_strtoupper($pays) == mb_strtoupper($paysASave))
+            if(mb_strtoupper($value) == mb_strtoupper($paysASave))
             {
                 $verif = 1;
-                $index = count($configData['database']['table']);
             }
         }
         if($verif == 0)
