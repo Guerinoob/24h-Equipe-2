@@ -2,7 +2,6 @@
 include_once('../includes/utils_page.php');
 get_header();
 
-
 $user = get_logged_user();
 
 if($user){
@@ -14,28 +13,51 @@ if($user){
             $pays = $_POST['pays'];
             $type_cafe = $_POST['type_cafe'];
             $quantite = $_POST['quantite'];
+            $exportateur = $_POST['exportateur'];
 
-            /*if(!is_int($quantite)){
-                echo 'Le stock doit être un nombre entier !';
-            }
-            else{
-                $req_insert = "INSERT INTO varietes(id_type_cafe, id_pays, stock, id_exportateur) VALUES(?, ?, ?, ?)";
-                $args = array($type_cafe, $pays, $quantite, $user->get('id'));
+            $req_stock = "SELECT stock FROM varietes WHERE id_type_cafe = ? AND id_pays = ? AND id_exportateur = ?";
+            $args = array($type_cafe, $pays, $exportateur);
 
-                if($db->prepare($req_insert)){
-                    if($db->execute_prepared_query($args)){
-                        echo 'La variété a été ajoutée !';
+            if($db->prepare($req_stock)){
+                if($results = $db->execute_prepared_query($args)[0]){
+
+                    if($results['stock'] < $quantite){
+                        echo 'Il n\' y a pas assez de café en stock !';
                     }
                     else{
-                        echo 'Erreur execute';
+                        $req_insert = "INSERT INTO commandes(id_type_cafe, id_pays, quantite, id_exportateur, id_importateur, date) VALUES(?, ?, ?, ?, ?, ?)";
+
+                        $args = array($type_cafe, $pays, $quantite, $exportateur, $user->get('id'), date('Y-m-d', time()));
+
+                        if($db->prepare($req_insert)){
+                            if($db->execute_prepared_query($args)){
+                                echo 'La commande a été passée !';
+
+                                $req_change_stock = "UPDATE varietes SET stock = stock - ? WHERE id_type_cafe = ? AND id_pays = ? AND id_exportateur = ?";
+                                $args = array($quantite, $type_cafe, $pays, $exportateur);
+
+                                $db->prepare($req_change_stock);
+                                if(!$db->execute_prepared_query($args)){
+                                    echo 'Erreur changement stock';
+                                }
+                            }
+                            else{
+                                echo 'Erreur execute';
+                            }
+                        }
+                        else{
+                            echo 'Erreur prepare';
+                        }
                     }
+
                 }
                 else{
-                    echo 'Erreur prepare';
+                    echo 'Erreur execute stock';
                 }
-            }*/
-
-            var_dump($_POST);
+            }
+            else{
+                echo 'Erreur prepare stock';
+            }
 
         }
 
@@ -48,14 +70,12 @@ if($user){
         $liste_pays = $db->query_get_rows($req_pays);
 
 
-        // À mettre en AJAX sur changement d'exportateur$req_quantite_restante = "SELECT stock FROM varietes":
-
 
         ?>
 
 
         <div class="column is-3 is-offset-3">
-            <form method="post" action="#">
+            <form method="post" action="">
                 <div class="field">
                     <label for="type_cafe" class="label">Type de café</label>
                     <div class="control">
@@ -140,8 +160,7 @@ if($user){
                         }
                     );
                 }
-                var exportateur_select = $('');
-                var type_cafe_select = $('#type_cafe');
+
 
                 $('#pays').on('change', get_exportateurs);
                 $('#type_cafe').on('change', get_exportateurs);
