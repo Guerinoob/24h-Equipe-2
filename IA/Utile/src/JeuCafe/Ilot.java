@@ -1,5 +1,4 @@
 package JeuCafe;
-
 import java.util.*;
 
 /**
@@ -8,34 +7,6 @@ import java.util.*;
 public class Ilot {
 
     private ArrayList<Parcelle> listeParcelle;
-
-    public Ilot(String map) {
-        ArrayList<ArrayList<String>> matrice = new ArrayList<>(new ArrayList<>());
-        int ligne = -1, colonne = 0;
-        final String delims = "[:]+";
-        String[] valeurs = map.split(delims);
-        for (String valeur : valeurs) {
-            if (ligne == -1) {
-                matrice.add(new ArrayList<>());
-            }
-
-            ligne = matrice.size() - 1;
-
-            matrice.get(ligne).add(valeur);
-
-            colonne = matrice.get(ligne).indexOf(valeur);
-
-            System.out.println(ligne + ";" + colonne + ";" + matrice.size());
-
-            if (matrice.get(ligne).get(colonne).equals("|")) {
-                System.out.println("ligne");
-                matrice.add(new ArrayList<>());
-            }
-
-
-            System.out.println("ligne = " + ligne + " ; " + matrice.get(ligne).get(colonne));
-        }
-    }
 
 
     /**
@@ -63,6 +34,32 @@ public class Ilot {
             }
             lig++;
         }
+    }
+
+
+    public static ArrayList<ArrayList<Integer>> convertirStringToInteger(String map) {
+        ArrayList<ArrayList<Integer>> matrice = new ArrayList<>(new ArrayList<>());
+        int ligne = -1, colonne = 0;
+        final String delims = "[:|]+";
+        String[] valeurs = map.split(delims);
+        for (String valeur : valeurs) {
+
+            if (ligne == -1 || colonne == 9) {
+                matrice.add(new ArrayList<>());
+            }
+
+            ligne = matrice.size() - 1;
+
+            matrice.get(ligne).add(Integer.parseInt(valeur));
+
+            colonne = matrice.get(ligne).lastIndexOf(valeur);
+
+            System.out.println(ligne + ";" + colonne + ";" + matrice.size() +";"+ matrice.get(ligne).get(colonne));
+
+
+        }
+
+        return matrice;
     }
 
     /**
