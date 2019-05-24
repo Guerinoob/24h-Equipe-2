@@ -18,5 +18,5 @@
     </head>
 
     <body>
-
+    <!-- Navbar a inclure ici -->
     <div class="container">
