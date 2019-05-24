@@ -133,7 +133,7 @@
 
 ?>
 
-<form action="modifierPays.php" method="post" enctype="multipart/form-data" id="formAfficherModif">
+<form class="dropdown" action="modifierPays.php" method="post" enctype="multipart/form-data" id="formAfficherModif">
     <input type="hidden" name="idPays" id="idPays">
 </form>
 
