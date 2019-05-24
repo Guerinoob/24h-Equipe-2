@@ -309,3 +309,6 @@ if(isset($_POST['idPays']))
 
     file.addEventListener('change', changenom, false);
 </script>
+
+<?php
+    get_footer();
