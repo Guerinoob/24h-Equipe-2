@@ -47,9 +47,15 @@ public class Ilot {
             return listePuissance;
         }
         else {
-            while (puissanceProche(nb) != 0) {
-                listePuissance.add(puissanceProche(nb));
-                nb = (int) (nb - Math.pow(2, nb));
+        	int pProche;
+            while ( (pProche = puissanceProche(nb) ) != 0) {
+                listePuissance.add(pProche);
+                nb = (int) (nb - Math.pow(2, pProche));
+           
+            }
+            if(nb == 1)
+            {
+            	listePuissance.add(pProche);
             }
             return listePuissance;
         }
