@@ -36,11 +36,11 @@ public class Ilot {
     }
 
 
-    public ArrayList<Byte> dechiffreEnPuissanceDeDeux(int nb)
+    public ArrayList<Integer> dechiffreEnPuissanceDeDeux(int nb)
     {
         //nb doit être >= 1
 
-        ArrayList<Byte> listePuissance = new ArrayList<Byte>();
+        ArrayList<Integer> listePuissance = new ArrayList<Integer>();
 
         if(puissanceProche(nb) == 0) {
             listePuissance.add(puissanceProche(nb));
@@ -49,7 +49,7 @@ public class Ilot {
         else {
             while (puissanceProche(nb) != 0) {
                 listePuissance.add(puissanceProche(nb));
-                nb = nb - Math.pow(2, nb);
+                nb = (int) (nb - Math.pow(2, nb));
             }
             return listePuissance;
         }
