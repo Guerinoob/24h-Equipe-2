@@ -14,10 +14,10 @@ if(get_logged_user() != null) {
     </form>
     <?php
 }
-    ?>
-
-<a href="page2.php">Page 2</a>
 
 
-<?php
+var_dump(get_logged_user());
+
+
+
 get_footer();
