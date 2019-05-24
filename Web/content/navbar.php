@@ -1,5 +1,5 @@
 
-<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+<nav class="navbar has-background-grey-dark" role="navigation" aria-label="main navigation">
 
     <div id="navbarBasicExample" class="navbar-menu">
 
