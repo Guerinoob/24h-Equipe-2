@@ -3,13 +3,13 @@ package JeuCafe;
 /**
  * 
  */
-public class Terre extends Unite {
+//public class Terre extends Unite {
 
     /**
      * Default constructor
      */
-    public Terre() {
-    }
+    //public Terre() {
+    //}
 
 
-}
+//}

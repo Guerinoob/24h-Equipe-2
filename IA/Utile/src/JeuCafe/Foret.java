@@ -3,12 +3,12 @@ package JeuCafe;
 /**
  * 
  */
-public class Foret extends Unite {
+//public class Foret extends Unite {
 
     /**
      * Default constructor
      */
-    public Foret() {
-    }
+    //public Foret() {
+    //}
 
-}
+//}

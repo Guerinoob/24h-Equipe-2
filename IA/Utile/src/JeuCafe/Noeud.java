@@ -57,7 +57,7 @@ public class Noeud {
         }
         */
 
-
+/*
         for(String move : this.ilot.getAllMoves()){
             Ilot new_ilot = new Ilot(this.ilot);
             new_ilot.jouer(move);
@@ -81,7 +81,7 @@ public class Noeud {
 
             enfants.add(n);
         }
-
+*/
     }
     public LinkedList<String> listOfMove(){
         /*LinkedList<String> move = new LinkedList<>();
