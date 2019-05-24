@@ -5,7 +5,7 @@ get_header();
 
 ?>
 
-<div id="map" style="width:80vw;height:75vh"></div>
+<div id="map" style="width:100vw;height:100vh;z-index:0"></div>
 
 
 <?php
