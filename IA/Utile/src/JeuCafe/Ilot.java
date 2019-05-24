@@ -77,7 +77,7 @@ public class Ilot {
     public int[] dechiffreEnPuissanceDeDeux(int nb) {
         //nb doit être >= 1
 
-        int listePuissance [] = new int[] {-1,-1,-1,-1};
+        int listePuissance [] = new int[] {0, 0,0,0};
 
         if (puissanceProche(nb) == 0) {
             listePuissance[0] = puissanceProche(nb);
@@ -85,12 +85,12 @@ public class Ilot {
         } else {
             int pProche;
             while ((pProche = puissanceProche(nb)) != 0) {
-                listePuissance[3-pProche] = pProche;
+                listePuissance[3-pProche] = 1;
                 nb = (int) (nb - Math.pow(2, pProche));
 
             }
             if (nb == 1) {
-                listePuissance[3] = pProche;
+                listePuissance[3] = 1;
             }
             return listePuissance;
         }
