@@ -10519,7 +10519,8 @@ label.panel-block:hover {
 }
 
 .footer {
+  border-top: medium outset yellow;
   background-color: #fafafa;
-  padding: 3rem 1.5rem 6rem;
+  padding: 1rem 1.5rem 1.5rem;
 }
 /*# sourceMappingURL=bulma.css.map */

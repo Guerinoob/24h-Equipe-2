@@ -1,21 +1,21 @@
         </div>
 
     </body>
-        <footer class="footer">
+        <footer class="footer has-background-grey-dark has-text-white">
             <div class="columns">
-                <div class="column">
+                <div class="column has-text-centered is-2 is-italic">
                     Equipe Caen 2 : Unnamed
                 </div>
-                <div class="column is-centered">
-                    <h1 class="subtitle"> 1ère années :</h1>
+                <div class="column has-text-centered">
+                    <h1 class="subtitle has-text-warning"> 1ère années :</h1>
                     <ul>
                         <li> LECHASLES Quentin</li>
                         <li> GAUDEMER Samuel</li>
                         <li> CHAVAS Nathan</li>
                     </ul>
                 </div>
-                <div class="column is-centered">
-                    <h3 class="subtitle">2ème années :</h3>
+                <div class="column">
+                    <h3 class="subtitle has-text-warning">2ème années :</h3>
                     <ul>
                         <li> HUET Jérémy</li>
                         <li> DAVID Hadrien</li>
