@@ -81,3 +81,24 @@ function disconnect_current_user(){
         unset($_SESSION['user']);
     }
 }
+
+
+
+
+function is_admin($user_id){
+    $user = new User();
+    $user->init_by_id($user_id);
+    return $user->get('role') == 'admin';
+}
+
+function is_importateur($user_id){
+    $user = new User();
+    $user->init_by_id($user_id);
+    return $user->get('role') == 'importateur';
+}
+
+function is_exportateur($user_id){
+    $user = new User();
+    $user->init_by_id($user_id);
+    return $user->get('role') == 'exportateur';
+}
