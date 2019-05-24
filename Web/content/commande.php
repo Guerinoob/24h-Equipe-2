@@ -128,7 +128,7 @@ if($user){
                         <input type="submit" id="submit" name="submit" value="Submit" class="button is-link" />
                     </div>
                     <div class="control">
-                        <button class="button is-text">Cancel</button>
+                        <p class="button is-text">Cancel</p>
                     </div>
                 </div>
             </form>

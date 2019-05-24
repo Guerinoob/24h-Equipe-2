@@ -207,11 +207,12 @@ if(isset($_POST["enregistrer"]))
 
         <div class="field is-grouped" style="margin-left: 30%; margin-bottom : 2%;">
             <div class="control">
-                <input class="button is-text" type="reset" value="Réinitialiser">
-            </div>
-            <div class="control">
                 <input class="button is-link" type="submit" name="enregistrer" value="Enregistrer">
             </div>
+            <div class="control">
+                <input class="button is-text" type="reset" value="Réinitialiser">
+            </div>
+
         </div>
 
         </form>

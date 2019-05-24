@@ -62,7 +62,7 @@
             </div>
 
             <div class="navbar-item">
-                    <a class="button is-dark">
+                    <a href="login.php" class="button is-dark">
                         Se connecter
                     </a>
             </div>
