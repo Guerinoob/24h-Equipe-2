@@ -4,9 +4,7 @@ get_header();
 
 global $db;
 
-$xmlfile = file_get_contents("https://sql.sh/ressources/sql-pays/sql-pays.xml");
-$ob= simplexml_load_string($xmlfile);
-$json  = json_encode($ob);
+$json  = file_get_contents("js/traduction.json");
 $configData = json_decode($json, true);
 
 function str_to_noaccent($str)
@@ -87,15 +85,12 @@ if(isset($_POST["enregistrer"]))
     $quantiteArabicaASave = str_to_noaccent($_POST["quantiteArabica"]);
     $quantiteRobustaASave = str_to_noaccent($_POST["quantiteRobusta"]);
 
-    //verif pays
     $verif = 0;
-    for($index=0 ; $index<count($configData['database']['table']) ; $index++)
+    foreach($configData as $value)
     {
-        $pays = str_to_noaccent($configData['database']['table'][$index]['column'][4]);
-        if(mb_strtoupper($pays) == mb_strtoupper($paysASave))
+        if(mb_strtoupper($value) == mb_strtoupper($paysASave))
         {
             $verif = 1;
-            $index = count($configData['database']['table']);
         }
     }
     if($verif == 0)
@@ -121,6 +116,19 @@ if(isset($_POST["enregistrer"]))
     ////COPIE DU DRAPEAU DANS LE DOSSIER IMAGE
     $resultat = move_uploaded_file($_FILES['drapeau']['tmp_name'],"image/".$drapeauASave);
 
+    $results = $db->prepare("SELECT id from pays where nom = ?");
+    if($results) {
+        $array = array($paysASave);
+        $results = $db->execute_prepared_query($array);
+        if ($results) {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "http://localhost/24h/24h-Equipe-2/Web/content/createIcon?pays=".$results[0]["id"].".php");
+            curl_setopt($ch, CURLOPT_HEADER, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_close($ch);
+        }
+    }
+
 }
 
 
@@ -129,7 +137,7 @@ if(isset($_POST["enregistrer"]))
         <h1 class="title is-1" style="text-align: center; margin-bottom : 50px">Ajout d'un pays</h1>
         <div class="columns">
             <div class="column is-3 is-offset-3">
-                <form action="ajoutPays.php" method="post" enctype="multipart/form-data">
+                <form action="voir_top_producteurs.php" method="post" enctype="multipart/form-data">
 
 
 
@@ -148,17 +156,20 @@ if(isset($_POST["enregistrer"]))
                         <div class="control has-icons-left">
                             <textarea name="description" class="textarea" placeholder="     Ce pays possède beaucoup d'informaticiens"></textarea>
 
+                            <span class="icon has-text-info">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
                         </div>
                     </div>
                     <p class="label">Drapeau</p>
                     <div class="file">
                         <label class="file-label">
-                            <input class="file-input" type="file" name="drapeau">
+                            <input class="file-input" type="file" id="file" name="drapeau">
                             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-upload"></i>
               </span>
-              <span class="file-label">
+            <span id="nomFichier" class="file-label">
                 Choisissez un fichier...
               </span>
             </span>
@@ -205,19 +216,29 @@ if(isset($_POST["enregistrer"]))
             </div>
         </div>
 
-        <div class="field is-grouped" style="margin-left: 30%; margin-bottom : 2%;">
-            <div class="control">
-                <input class="button is-link" type="submit" name="enregistrer" value="Enregistrer">
-            </div>
+        <div class="field is-grouped" style="margin-left: 30%;">
             <div class="control">
                 <input class="button is-text" type="reset" value="Réinitialiser">
             </div>
-
+            <div class="control">
+                <input class="button is-link" type="submit" name="enregistrer" value="Enregistrer">
+            </div>
         </div>
 
         </form>
     </div>
+<script>
+    var file = document.getElementById('file');
 
+    var changenom = function()
+    {
+        var tab=file.value.split('\\');
+        var nomFichier = document.getElementById('nomFichier');
+        nomFichier.innerHTML = tab[2];
+    }
+
+    file.addEventListener('change', changenom, false);
+</script>
 <?php
 get_footer();
 ?>

@@ -53,6 +53,10 @@
                             Ajouter un pays
                         </a>
 
+                        <a href="modifierPays.php" class="navbar-item">
+                            Modifier un pays
+                        </a>
+
                         <?php
                     }
                 }
@@ -92,9 +96,23 @@
             </div>
 
             <div class="navbar-item">
+
+                <?php
+                if($user){
+                    ?>
+                    <a href="login.php?disconnect" class="button is-dark">
+                        Se déconnecter
+                    </a>
+                    <?php
+                }
+                else {
+                    ?>
                     <a href="login.php" class="button is-dark">
                         Se connecter
                     </a>
+                    <?php
+                }
+                ?>
             </div>
             </div>
         </div>

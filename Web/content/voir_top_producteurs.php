@@ -28,7 +28,7 @@ else {
 
     echo '<h1 class="title has-text-dark has-text-weight-bold" style="text-align:center; margin-bottom:2%;margin-top:2%;">Visualiser les 20 plus gros producteurs</h1>';
 
-    echo '<table class="table is-bordered is-striped is-narrow " style="margin: auto; margin-bottom: 2%;">';
+    echo '<table class="table is-bordered is-striped is-narrow " style="margin: auto; margin-bottom: 2%; ">';
         echo '<thead class="thead">';
             echo '<th class="th"></th>';
             echo '<th class="th">Pays</th>';
