@@ -19,12 +19,6 @@ else {
         $prod_totale += $pays['production_arabica'] + $pays['production_robusta'];
     }
 
-    $user = get_logged_user();
-    if($user && is_admin($user->get('id')))
-    {
-        echo '<input type="button" value="ajouter pays" onclick="ajouterPays()">';
-        echo '<input type="button" value="modifier pays" onclick="modifierPays()">';
-    }
 
     echo '<h1 class="title has-text-info has-text-weight-bold">Visualiser les 20 plus gros producteurs</h1>';
 
@@ -51,7 +45,7 @@ else {
                 echo '<tr>';
 
                     echo '<td>'.$classement.'</td>';
-                    echo '<td><img src="images/'.$pays['drapeau'].'" width="30px" height="30px" /> '.$pays['nom'].'</td>';
+                    echo '<td><img src="image/'.$pays['drapeau'].'" width="30px" height="30px" /> '.$pays['nom'].'</td>';
                     echo '<td>'.$pays['description'].'</td>';
                     echo '<td>'.$pays['capitale'].'</td>';
                     echo '<td>'.$pays['nb_habitants'].'</td>';
@@ -72,14 +66,3 @@ else {
 }
 get_footer();
 ?>
-
-<script language="JavaScript" type="text/javascript">
-    function ajouterPays()
-    {
-        document.location="ajoutPays.php";
-    }
-    function modifierPays()
-    {
-        document.location="modifierPays.php";
-    }
-</script>
