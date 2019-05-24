@@ -180,7 +180,7 @@ class Database
                     break;
             }
 
-            $array[] = $value;
+            $array[] = &$value;
         }
 
         array_unshift($array, $types);

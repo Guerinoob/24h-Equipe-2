@@ -16,6 +16,7 @@ function authenticate_user_by_username($username, $password){
     }
 
     $user = new User();
+
    if($user->init_by_username($username, $password)){
        $_SESSION['user'] = $user;
        return true;
@@ -28,38 +29,16 @@ function authenticate_user_by_username($username, $password){
 
 
 /**
- * Permet de connecter un utilisateur grâce à son email
- * @param string $email Email de l'utilisateur
- * @param string $password Mot de passe de l'utilisateur
- * @return bool Vrai si l'utilisateur est connecté, faux sinon
- */
-function authenticate_user_by_email($email, $password){
-    if(empty($email) || empty($password)){
-        return false;
-    }
-
-    $user = new User();
-    if($user->init_by_email($email, $password)){
-        $_SESSION['user'] = $user;
-        return true;
-    }
-
-    return false;
-}
-
-
-/**
  * permet d'inscrire un utilisateur dans la base
  * @param string $username Le username de l'utilisateur
- * @param string $email L'email de l'utilisateur
  * @param string $password Mot de passe de l'utilisateur
  * @return bool|int Faux en cas d'erreur, l'ID de l'utilisateur créé si l'inscription s'est bien faite
  */
-function insert_user($username, $email, $password){
+function insert_user($username, $password){
     global $db;
 
-    $req = "INSERT INTO users(username, email, password) VALUES(? , ?, ?)";
-    $args = array($username, $email, $password);
+    $req = "INSERT INTO users(username, password) VALUES(?, ?)";
+    $args = array($username, $password);
 
     if(!$db->prepare($req)) return false;
 

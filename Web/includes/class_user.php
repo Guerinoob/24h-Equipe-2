@@ -94,41 +94,6 @@ class User
 
 
     /**
-     * Tente de retrouver l'utilisateur correspondant au username et au password
-     * @param string $email Email de l'utilisateur
-     * @param string $password Mot de passe de l'utilisateur
-     * @return bool Vrai si l'utilisateur est retrouvé, faux sinon
-     */
-    public function init_by_email($email, $password){
-        if(empty($email) || empty($password)){
-            return false;
-        }
-
-        global $db;
-
-        $req = "SELECT * FROM users WHERE email = ? AND password = ?";
-        $db->prepare($req);
-        $row = $db->execute_prepared_query(array($email, $password))[0];
-
-        if(!$row){
-            return false;
-        }
-
-        $this->ID = $row['id'];
-
-
-        unset($row['id']);
-        unset($row['password']);
-
-        foreach($row as $key=>$value){
-            $this->attr[$key] = $value;
-        }
-
-        return true;
-    }
-
-
-    /**
      * Méthode permettant de récupérer la valeur d'un attribut de l'utilisateur
      * @param string $key Attribut souhaité
      * @return int|mixed L'ID si celui-ci est demandé, l'attribut demandé sinon
