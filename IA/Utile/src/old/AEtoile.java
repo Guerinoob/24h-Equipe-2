@@ -1,3 +1,5 @@
+package old;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -21,14 +23,14 @@ public class AEtoile {
     }
 
     /**
-     * Permet de résoudre AEtoile
-     * @return Le Noeud qui contient le chemin le plus court pour aller du Noeud départ au Noeud d'arrivé
+     * Permet de résoudre old.AEtoile
+     * @return Le old.Noeud qui contient le chemin le plus court pour aller du old.Noeud départ au old.Noeud d'arrivé
       */
     public Noeud resoudre() {
         PriorityQueue<Noeud> listeOuverte = new PriorityQueue<>(comparateurHeuristique);//Contient les Noeuds pour aller vers l'arrivé par priorité
         LinkedList<Noeud> listeFerme = new LinkedList<>(); //Contient tous les noeuds par lesquels on est déjà passé
-        listeOuverte.add(depart); //On ajoute le Noeud de départ
-        Noeud choisi = null; //Le Noeud qu'on va tester
+        listeOuverte.add(depart); //On ajoute le old.Noeud de départ
+        Noeud choisi = null; //Le old.Noeud qu'on va tester
         while (!listeOuverte.isEmpty()) { //Tant qu'on peut tester
             choisi = listeOuverte.poll(); //On récupère le plus prometteur
             if (choisi.estEgal(arrive)) { //Si c'est le noeud d'arrivé on a gagné

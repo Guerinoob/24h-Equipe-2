@@ -1,10 +1,12 @@
+package old;
+
 public class Ecart{
     private Case joueur;
     private Case pièce;
 
     @Override
     public String toString() {
-        return "Ecart{" +
+        return "old.Ecart{" +
                 "joueur=" + joueur +
                 ", pièce=" + pièce +
                 ", ecart=" + ecart +

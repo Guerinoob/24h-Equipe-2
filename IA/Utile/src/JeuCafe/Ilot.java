@@ -1,4 +1,4 @@
-
+package JeuCafe;
 import java.util.*;
 
 /**
@@ -6,10 +6,10 @@ import java.util.*;
  */
 public class Ilot {
 
-    /**
-     * Default constructor
-     */
-    public Ilot() {
+    public Ilot(String map) {
+        String delims = "[:|]+";
+        String[] tokens = map.split(delims);
+        System.out.println(tokens);
     }
 
 
