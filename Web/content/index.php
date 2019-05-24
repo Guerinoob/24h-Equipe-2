@@ -7,7 +7,6 @@ if(isset($_POST['logout'])){
     disconnect_current_user();
 }
 
-if(get_logged_user() != null) {
     ?>
 
    <!DOCTYPE html>
@@ -143,7 +142,6 @@ if(get_logged_user() != null) {
 </body>
 </html>
     <?php
-}
 
 
 
