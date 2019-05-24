@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
         $auth = authenticate_user_by_username($username, $password);
 
         if(!$auth){
-            echo 'Erreur';
+            echo '<div class="notification is-danger">Erreur</div>';
         }
         else{
             header('Location: voir_top_producteurs.php');

@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
         $user_id = insert_user($username, $password, $role);
 
         if(!$user_id){
-            echo 'Erreur';
+            echo '<div class="notification is-danger">Erreur</div>';
         }
         else{
             global $users;
