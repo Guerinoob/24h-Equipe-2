@@ -1,10 +1,9 @@
 package JeuCafe;
-import java.util.*;
 
 /**
  * 
  */
-public class Terre extends Unité {
+public class Terre extends Unite {
 
     /**
      * Default constructor

@@ -1,10 +1,9 @@
 package JeuCafe;
-import java.util.*;
 
 /**
  * 
  */
-public class Foret extends Unité {
+public class Foret extends Unite {
 
     /**
      * Default constructor

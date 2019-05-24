@@ -4,12 +4,15 @@ import java.util.*;
 /**
  * 
  */
-public class Unité {
+public class Unite {
+
+    private Position position;
 
     /**
      * Default constructor
      */
-    public Unité() {
+    public Unite(int lig, char col) {
+        this.position = new Position(lig, col);
     }
 
 
@@ -17,7 +20,6 @@ public class Unité {
     /**
      * 
      */
-    private Position position;
 
 
     /**
