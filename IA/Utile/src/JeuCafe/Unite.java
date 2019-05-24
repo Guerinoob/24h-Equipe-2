@@ -7,6 +7,7 @@ import java.util.*;
 public class Unite {
 
     private Position position;
+    private Parcelle parcelle;
 
     /**
      * Default constructor
@@ -29,7 +30,15 @@ public class Unite {
         // TODO implement here
         return null;
     }
-
+    
+    public Parcelle getParcelle()
+    {
+    	return parcelle;
+    }
+    public void setParcelle(Parcelle p)
+    {
+    	this.parcelle = p;
+    }
     /**
      * @return
      */

@@ -71,23 +71,23 @@ public class Ilot {
     }
 
 
-    public ArrayList<Integer> dechiffreEnPuissanceDeDeux(int nb) {
+    public int[] dechiffreEnPuissanceDeDeux(int nb) {
         //nb doit être >= 1
 
-        ArrayList<Integer> listePuissance = new ArrayList<Integer>();
+        int listePuissance [] = new int[] {-1,-1,-1,-1};
 
         if (puissanceProche(nb) == 0) {
-            listePuissance.add(puissanceProche(nb));
+            listePuissance[0] = puissanceProche(nb);
             return listePuissance;
         } else {
             int pProche;
             while ((pProche = puissanceProche(nb)) != 0) {
-                listePuissance.add(pProche);
+                listePuissance[3-pProche] = pProche;
                 nb = (int) (nb - Math.pow(2, pProche));
 
             }
             if (nb == 1) {
-                listePuissance.add(pProche);
+                listePuissance[3] = pProche;
             }
             return listePuissance;
         }
