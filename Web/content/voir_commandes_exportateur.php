@@ -25,8 +25,10 @@ if($user){
             }
         }
 
-        $req = "SELECT commandes.*, username as nom_importateur, etats_commandes.nom as etat, etats_commandes.id as etat_id FROM commandes 
+        $req = "SELECT commandes.*, type_cafe.nom as nom_cafe, pays.nom as nom_pays, username as nom_importateur, etats_commandes.nom as etat, etats_commandes.id as etat_id FROM commandes 
                 JOIN users ON commandes.id_importateur = users.id 
+                JOIN type_cafe ON type_cafe.id = commandes.id_type_cafe 
+                JOIN pays ON pays.id = commandes.id_pays 
                 JOIN etats_commandes ON etats_commandes.id = commandes.etat 
                 WHERE id_exportateur = ?";
         $args = array($user->get('id'));
@@ -62,8 +64,8 @@ if($user){
 
                 foreach($commandes as $commande){
                     echo '<tr>';
-                        echo '<td>'.$commande['id_type_cafe'].'</td>';
-                        echo '<td>'.$commande['id_pays'].'</td>';
+                        echo '<td>'.$commande['nom_cafe'].'</td>';
+                        echo '<td>'.$commande['nom_pays'].'</td>';
                         echo '<td>'.$commande['nom_importateur'].'</td>';
                         echo '<td>'.$commande['etat'].'</td>';
 

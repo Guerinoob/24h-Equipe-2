@@ -58,7 +58,7 @@ if(isset($_POST['submit'])){
             <div class="container">
                 <div class="column is-6 is-offset-3">
                     <div class="box" style="border-radius: 20px;">
-                        <h1 class="title has-text-info has-text-weight-bold">S'ENREGISTRER</h1>
+                        <h1 class="title has-text-info has-text-weight-bold">S'INSCRIRE EN EXPORTATEUR</h1>
                         <div class="stroke-line is-center"></div>
                         <form action="" method="POST">
                             <div class="field">

@@ -205,7 +205,7 @@ if(isset($_POST["enregistrer"]))
             </div>
         </div>
 
-        <div class="field is-grouped" style="margin-left: 30%;">
+        <div class="field is-grouped" style="margin-left: 30%; margin-bottom : 2%;">
             <div class="control">
                 <input class="button is-text" type="reset" value="Réinitialiser">
             </div>

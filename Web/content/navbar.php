@@ -16,40 +16,56 @@
 
             <div class="navbar-dropdown has-background-light">
 
-                <a class="navbar-item">
+                <a href="index.php" class="navbar-item">
                     Accueil
                 </a>
-                <a class="navbar-item">
+                <a href="carte.php" class="navbar-item">
                     Voir les pays producteurs
                 </a>
-                <a class="navbar-item">
+                <a href="commande.php" class="navbar-item">
                     Passer une commande
                 </a>
-                <a class="navbar-item">
+                <a href="voir_commandes_exportateur.php" class="navbar-item">
                     Voir les commandes
                 </a>
 
-                <a class="navbar-item">
-                    Ajouter pays
+                <a href="ajoutPays.php" class="navbar-item">
+                    Ajouter un pays
                 </a>
                 <hr class="navbar-divider">
-                <a class="navbar-item">
+                <a href="about.php" class="navbar-item">
                     A propos
                 </a>
             </div>
         </div>
 
 
+
+
+
         <div class="navbar-end">
+
+            <div class="buttons">
+            <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="button is-warning is-outlined navbar-item">
+                            <strong>S'inscrire</strong>
+                        </a>
+                <div class="navbar-dropdown has-background-lighter">
+                            <a href="signup_exportateur.php" class="navbar-item">
+                                Exportateur
+                            </a>
+                    <hr class="navbar-divider">
+                            <a href="signup_importateur.php" class="navbar-item">
+                                Importateur
+                            </a>
+                </div>
+            </div>
+
             <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-warning is-outlined ">
-                        <strong>S'inscrire</strong>
-                    </a>
                     <a class="button is-dark">
                         Se connecter
                     </a>
-                </div>
+            </div>
             </div>
         </div>
     </div>
