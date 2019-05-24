@@ -14,7 +14,7 @@ get_header();
     <p>Côté front-end, nous avons choisi d'utiliser jQuery pour le Javascript, ce qui nous a permis d'utiliser un peu d'AJAX facilement.</p>
     <p> Nous avons opté pour une approche sobre mais efficace, produisant un site facile d'utilisation et compréhensible pour tous. Les couleurs, chaudes, collent bien au sujet du site, la vente de café. <br>
     La page d'accueil permet une description du projet, et un moyen d'accès aux différentes parties du site. certaines partie du site ne sont accessibles que lors de la connexion, en fonction du type d'utilisateur.<br>
-    Pour l'ensemble du site, nous avons utilisé le framework Bulma, qui nous a aidé à faire une génération rapide de l'ensemble des pages et de leur stylisation </p>
+    Pour l'ensemble du site, nous avons utilisé le framework Bulma, qui nous a aidé à faire une génération rapide de l'ensemble des pages et de leur stylisation. </p>
 </div>
 <?php
 get_footer();
