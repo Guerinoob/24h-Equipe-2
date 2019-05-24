@@ -27,18 +27,18 @@ function authenticate_user_by_username($username, $password){
 }
 
 
-
 /**
  * permet d'inscrire un utilisateur dans la base
  * @param string $username Le username de l'utilisateur
  * @param string $password Mot de passe de l'utilisateur
+ * @param string $role Rôle de l'utilisateur
  * @return bool|int Faux en cas d'erreur, l'ID de l'utilisateur créé si l'inscription s'est bien faite
  */
-function insert_user($username, $password){
+function insert_user($username, $password, $role){
     global $db;
 
-    $req = "INSERT INTO users(username, password) VALUES(?, ?)";
-    $args = array($username, $password);
+    $req = "INSERT INTO users(username, password, role) VALUES(?, ?, ?)";
+    $args = array($username, $password, $role);
 
     if(!$db->prepare($req)) return false;
 
