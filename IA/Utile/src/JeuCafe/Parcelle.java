@@ -10,7 +10,8 @@ public class Parcelle {
     /**
      * Default constructor
      */
-
+    public Parcelle() {
+    }
 
     /**
      * @return
