@@ -53,12 +53,12 @@ if(isset($_POST['submit'])){
 
 ?>
 
-    <section class="hero has-background-grey-darker is-fullheight">
+    <section class="hero has-background-light is-fullheight">
         <div class="hero-body has-text-centered">
             <div class="container">
                 <div class="column is-6 is-offset-3">
                     <div class="box" style="border-radius: 20px;">
-                        <h1 class="title has-text-info has-text-weight-bold">S'INSCRIRE EN IMPORTATEUR</h1>
+                        <h1 class="title has-text-warning has-text-weight-bold">S'INSCRIRE EN IMPORTATEUR</h1>
                         <div class="stroke-line is-center"></div>
                         <form action="" method="POST">
                             <div class="field">
@@ -153,7 +153,7 @@ if(isset($_POST['submit'])){
                                 </div>
                             </div>
 
-                            <input type="submit" name="submit" id="submit" value="Créer le comtpe" class="button is-block is-info is-fullwidth has-text-weight-medium" />
+                            <input type="submit" name="submit" id="submit" value="Créer le comtpe" class="button is-block is-warning has-text-black is-fullwidth has-text-weight-medium" />
                             <a href="login.php" class="is-link has-text-grey-light" >Déjà un compte ? Se connecter.</a>
                         </form>
                     </div>

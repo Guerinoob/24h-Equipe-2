@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
             <div class="container">
                 <div class="column is-6 is-offset-3">
                     <div class="box" style="border-radius: 20px;">
-                        <h1 class="title has-text-info has-text-weight-bold">SE CONNECTER</h1>
+                        <h1 class="title has-text-warning has-text-weight-bold">SE CONNECTER</h1>
                         <div class="stroke-line is-center"></div>
                         <form action="" method="POST">
                             <div class="field">
@@ -70,7 +70,7 @@ if(isset($_POST['submit'])){
                                 </div>
                             </div>
 
-                            <input type="submit" name="submit" id="submit" value="Connexion" class="button is-block is-info is-fullwidth has-text-weight-medium" />
+                            <input type="submit" name="submit" id="submit" value="Connexion" class="button is-block has-text-black is-warning is-fullwidth has-text-weight-medium" />
                         </form>
                     </div>
                 </div>

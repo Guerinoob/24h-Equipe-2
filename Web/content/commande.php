@@ -67,12 +67,17 @@ if($user){
         ?>
 
 
-        <div class="column is-3 is-offset-3">
+        <section class="hero is-primary has-background-light is-fullheight">
+        <div class="hero-body has-text-centered">
+        <div class="container">
+            <h1 class="title is-2 has-text-dark">Passer une commande</h1>
+        <div class="column is-4 is-offset-4">
+            <div class="box" style="border-radius: 20px;">
             <form method="post" action="">
                 <div class="field">
                     <label for="type_cafe" class="label">Type de café</label>
-                    <div class="control">
-                        <div class="select">
+                    <div class="control is-expanded">
+                        <div class="select is-fullwidth">
                             <select name="type_cafe" id="type_cafe">
                                 <?php
 
@@ -133,6 +138,10 @@ if($user){
                 </div>
             </form>
         </div>
+        </div>
+        </div>
+        </div>
+        </section>
 
         <script>
             $(document).ready(function(){
