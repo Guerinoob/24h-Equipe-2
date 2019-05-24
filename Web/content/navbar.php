@@ -1,56 +1,43 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-            <img src="https://www.publicdomainpictures.net/pictures/270000/velka/coffee-logo-illustration-1537683452zYf.jpg" width="112" height="28">
-        </a>
 
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-    </div>
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
 
     <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item">
-                Accueil
-            </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+
 
             <a class="navbar-item">
-                Truc1
+                <img src="img/hamIcon.png" >
             </a>
 
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    PullDown menu
+
+            <div class="navbar-dropdown">
+
+
+                <a class="navbar-item">
+                    Voir les pays producteurs
                 </a>
-
-                <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                        A propos
-                    </a>
-                    <a class="navbar-item">
-                        Etc..
-                    </a>
-                    <a class="navbar-item">
-                        Etc....
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item">
-                        Reportez un problème
-                    </a>
-                </div>
+                <a class="navbar-item">
+                    Passer une commande
+                </a>
+                <a class="navbar-item">
+                    Voir les commandes
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                    A propos
+                </a>
             </div>
         </div>
+
 
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary">
+                    <a class="button is-warning">
                         <strong>S'inscrire</strong>
                     </a>
-                    <a class="button is-light">
+                    <a class="button is-dark">
                         Se connecter
                     </a>
                 </div>
