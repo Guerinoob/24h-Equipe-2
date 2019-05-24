@@ -1,5 +1,5 @@
 
-<nav class="navbar has-background-grey-dark" role="navigation" aria-label="main navigation">
+<nav class="navbar has-background-grey-dark" role="navigation" aria-label="main navigation" style="margin-bottom: 50px;">
 
     <div id="navbarBasicExample" class="navbar-menu is-active">
 
@@ -79,21 +79,28 @@
 
         <div class="navbar-end">
 
+            <?php
+            if(!$user){
+                ?>
             <div class="buttons">
-            <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="button is-warning is-outlined navbar-item">
-                            <strong>S'inscrire</strong>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="button is-warning is-outlined navbar-item">
+                        <strong>S'inscrire</strong>
+                    </a>
+                    <div class="navbar-dropdown has-background-lighter">
+                        <a href="signup_exportateur.php" class="navbar-item">
+                            Exportateur
                         </a>
-                <div class="navbar-dropdown has-background-lighter">
-                            <a href="signup_exportateur.php" class="navbar-item">
-                                Exportateur
-                            </a>
-                    <hr class="navbar-divider">
-                            <a href="signup_importateur.php" class="navbar-item">
-                                Importateur
-                            </a>
+                        <hr class="navbar-divider">
+                        <a href="signup_importateur.php" class="navbar-item">
+                            Importateur
+                        </a>
+                    </div>
                 </div>
-            </div>
+                <?php
+            }
+            ?>
+
 
             <div class="navbar-item">
 
