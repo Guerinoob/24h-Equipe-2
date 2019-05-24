@@ -1,3 +1,4 @@
+package JeuCafe;
 import java.util.LinkedList;
 
 public class AlphaBeta {

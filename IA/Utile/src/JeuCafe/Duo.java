@@ -1,3 +1,5 @@
+package JeuCafe;
+
 public class Duo{
     Noeud noeud;
     int solution;
