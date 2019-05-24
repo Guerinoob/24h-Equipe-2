@@ -64,7 +64,7 @@ if(isset($_POST['submit'])){
                             <div class="field">
                                 <div class="control has-icons-left">
                                     <label>
-                                        <input type="text" class="input" id="username" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>" />
+                                        <input type="text" placeholder="Nom d'utilisateur" class="input" id="username" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>" />
                                         <span class="icon is-small is-left">
                                                 <i class="fas fa-user"></i>
                                             </span>
@@ -75,7 +75,7 @@ if(isset($_POST['submit'])){
                             <div class="field">
                                 <div class="control has-icons-left">
                                     <label>
-                                        <input type="password" class="input" name="password" id="password" />
+                                        <input placeholder="Mot de passe" type="password" class="input" name="password" id="password" />
                                         <span class="icon is-small is-left">
                                                 <i class="fas fa-lock"></i>
                                             </span>
@@ -86,7 +86,7 @@ if(isset($_POST['submit'])){
                             <div class="field">
                                 <div class="control has-icons-left">
                                     <label>
-                                        <input type="text" class="input" name="entreprise" id="entreprise" value="<?php if(isset($_POST['entreprise'])) echo $_POST['entreprise']; ?>" />
+                                        <input placeholder="Nom de l'entreprise" type="text" class="input" name="entreprise" id="entreprise" value="<?php if(isset($_POST['entreprise'])) echo $_POST['entreprise']; ?>" />
                                         <span class="icon is-small is-left">
                                                 <i class="fas fa-user"></i>
                                             </span>
@@ -96,7 +96,7 @@ if(isset($_POST['submit'])){
                             <div class="field">
                                 <div class="control has-icons-left">
                                     <label>
-                                        <input type="text" class="input" name="adresse" id="adresse" value="<?php if(isset($_POST['adresse'])) echo $_POST['adresse']; ?>" />
+                                        <input placeholder="Adresse postale" type="text" class="input" name="adresse" id="adresse" value="<?php if(isset($_POST['adresse'])) echo $_POST['adresse']; ?>" />
                                         <div class="icon is-small is-left">
                                             <i class="fas fa-home"></i>
                                         </div>
@@ -106,7 +106,7 @@ if(isset($_POST['submit'])){
                             <div class="field">
                                 <div class="control has-icons-left">
                                     <label>
-                                        <input type="text" name="pays" class="input" id="pays" value="<?php if(isset($_POST['pays'])) echo $_POST['pays']; ?>" />
+                                        <input placeholder="Pays" type="text" name="pays" class="input" id="pays" value="<?php if(isset($_POST['pays'])) echo $_POST['pays']; ?>" />
                                         <div class="icon is-small is-left">
                                             <i class="fas fa-globe"></i>
                                         </div>
@@ -117,7 +117,7 @@ if(isset($_POST['submit'])){
                                 <div class="field">
                                     <div class="control has-icons-left">
                                         <label>
-                                            <input type="text" name="ville" class="input" id="ville" value="<?php if(isset($_POST['ville'])) echo $_POST['ville']; ?>" />
+                                            <input placeholder="Ville" type="text" name="ville" class="input" id="ville" value="<?php if(isset($_POST['ville'])) echo $_POST['ville']; ?>" />
                                             <div class="icon is-small is-left">
                                                 <i class="fas fa-home"></i>
                                             </div>
@@ -127,7 +127,7 @@ if(isset($_POST['submit'])){
                                 <div class="field">
                                     <div class="control has-icons-left">
                                         <label>
-                                            <input type="text" name="code_postal" class="input" id="code_postal" value="<?php if(isset($_POST['code_postal'])) echo $_POST['code_postal']; ?>" />
+                                            <input placeholder="Code postal" type="text" name="code_postal" class="input" id="code_postal" value="<?php if(isset($_POST['code_postal'])) echo $_POST['code_postal']; ?>" />
                                             <div class="icon is-small is-left">
                                                 <i class="fas fa-location-arrow"></i>
                                             </div>
@@ -144,7 +144,7 @@ if(isset($_POST['submit'])){
                                                 </a>
                                             </p>
                                             <p class="control is-expanded">
-                                                <input type="text" class="input" name="telephone" id="telephone" value="<?php if(isset($_POST['telephone'])) echo $_POST['telephone']; ?>" />
+                                                <input placeholder="Numero de telephone" type="text" class="input" name="telephone" id="telephone" value="<?php if(isset($_POST['telephone'])) echo $_POST['telephone']; ?>" />
                                             </p>
                                         </div>
                                         <p class="help">N'entrez pas le premier zéro</p>
