@@ -15,7 +15,7 @@ public class Ilot {
      */
     public Ilot(int[][] code) {
         listeUnite = new Unite[10][10];
-        int lig = 0, col, parcelle = 0;
+        int lig = 0, col;
         int[] Case;
         for (int[] ligne : code) {
             col = 0;
@@ -32,8 +32,8 @@ public class Ilot {
                 // Sinon si
                 else {
                     Case = dechiffreEnPuissanceDeDeux(unit);
-                    if (Case[2]!=-1){
-                        if (Case[3]!=-1){
+                    if (Case[2]!=0){
+                        if (Case[3]!=0){
                             listeUnite[lig][col].setParcelle(new Parcelle());
                         }
                         else {
@@ -133,8 +133,10 @@ public class Ilot {
     	return listeUnit;
     }
 
-    /*
-
-
-     */
+    @Override
+    public String toString() {
+        return "Ilot{" +
+                "listeUnite=" + Arrays.toString(listeUnite) +
+                '}';
+    }
 }
