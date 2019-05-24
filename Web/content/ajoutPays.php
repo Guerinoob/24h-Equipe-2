@@ -148,9 +148,6 @@ if(isset($_POST["enregistrer"]))
                         <div class="control has-icons-left">
                             <textarea name="description" class="textarea" placeholder="     Ce pays possède beaucoup d'informaticiens"></textarea>
 
-                            <span class="icon has-text-info">
-                        <i class="fas fa-info-circle"></i>
-                    </span>
                         </div>
                     </div>
                     <p class="label">Drapeau</p>

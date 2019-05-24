@@ -53,32 +53,118 @@ if(isset($_POST['submit'])){
 
 ?>
 
-    <form method="POST" action="">
-        <fieldset>
-            <legend>Inscription exportateur</legend>
+    <section class="hero is-primary is-primary is-fullheight">
+        <div class="hero-body has-text-centered">
+            <div class="container">
+                <div class="column is-6 is-offset-3">
+                    <div class="box" style="border-radius: 20px;">
+                        <h1 class="title has-text-info has-text-weight-bold">S'ENREGISTRER</h1>
+                        <div class="stroke-line is-center"></div>
+                        <form action="" method="POST">
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <label>
+                                        <input type="text" class="input" id="username" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>" />
+                                        <span class="icon is-small is-left">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                                    </label>
+                                </div>
+                            </div>
 
-            <label for="username">Username </label><input type="text" id="username" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>" />
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <label>
+                                        <input type="password" class="input" name="password" id="password" />
+                                        <span class="icon is-small is-left">
+                                                <i class="fas fa-lock"></i>
+                                            </span>
+                                    </label>
+                                </div>
+                            </div>
 
-            <label for="password">Mot de passe </label><input type="password" name="password" id="password" />
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <label>
+                                        <input type="text" class="input" name="entreprise" id="entreprise" value="<?php if(isset($_POST['entreprise'])) echo $_POST['entreprise']; ?>" />
+                                        <span class="icon is-small is-left">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <label>
+                                        <input type="text" class="input" name="adresse" id="adresse" value="<?php if(isset($_POST['adresse'])) echo $_POST['adresse']; ?>" />
+                                        <div class="icon is-small is-left">
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <label>
+                                        <input type="text" name="pays" class="input" id="pays" value="<?php if(isset($_POST['pays'])) echo $_POST['pays']; ?>" />
+                                        <div class="icon is-small is-left">
+                                            <i class="fas fa-globe"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="localisation">
+                                <div class="field">
+                                    <div class="control has-icons-left">
+                                        <label>
+                                            <input type="text" name="ville" class="input" id="ville" value="<?php if(isset($_POST['ville'])) echo $_POST['ville']; ?>" />
+                                            <div class="icon is-small is-left">
+                                                <i class="fas fa-home"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="control has-icons-left">
+                                        <label>
+                                            <input type="text" name="code_postal" class="input" id="code_postal" value="<?php if(isset($_POST['code_postal'])) echo $_POST['code_postal']; ?>" />
+                                            <div class="icon is-small is-left">
+                                                <i class="fas fa-location-arrow"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field is-expanded">
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                                <a class="button is-static">
+                                                    +33
+                                                </a>
+                                            </p>
+                                            <p class="control is-expanded">
+                                                <input type="text" class="input" name="telephone" id="telephone" value="<?php if(isset($_POST['telephone'])) echo $_POST['telephone']; ?>" />
+                                            </p>
+                                        </div>
+                                        <p class="help">N'entrez pas le premier zéro</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="button is-block is-info is-fullwidth has-text-weight-medium">Créer le compte</button>
+                            <a href="#Register" class="is-link has-text-grey-light" >Déjà un compte ? Se connecter.</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-            <label for="entreprise">Nom d'entreprise : </label><input type="text" name="entreprise" id="entreprise" value="<?php if(isset($_POST['entreprise'])) echo $_POST['entreprise']; ?>" />
-
-            <label for="adresse">Adresse : </label><input type="text" name="adresse" id="adresse" value="<?php if(isset($_POST['adresse'])) echo $_POST['adresse']; ?>" />
-
-            <label for="code_postal">Code Postal : </label><input type="text" name="code_postal" id="code_postal" value="<?php if(isset($_POST['code_postal'])) echo $_POST['code_postal']; ?>" />
-
-            <label for="ville">Ville : </label><input type="text" name="ville" id="ville" value="<?php if(isset($_POST['ville'])) echo $_POST['ville']; ?>" />
-
-            <label for="pays">Pays : </label><input type="text" name="pays" id="pays" value="<?php if(isset($_POST['pays'])) echo $_POST['pays']; ?>" />
-
-            <label for="telephone">Téléphone : </label><input type="text" name="telephone" id="telephone" value="<?php if(isset($_POST['telephone'])) echo $_POST['telephone']; ?>" />
 
 
 
-            <input type="submit" name="submit" id="submit" value="S'inscrire" />
-        </fieldset>
-    </form>
 
 
 <?php

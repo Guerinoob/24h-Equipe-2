@@ -13,6 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>24h</title>
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="css/bulma.css">
+    <link rel="stylesheet" href="css/login.css">
 
 
     <!-- Include jQuery-->
