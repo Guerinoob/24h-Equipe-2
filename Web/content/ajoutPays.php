@@ -121,6 +121,19 @@ if(isset($_POST["enregistrer"]))
     ////COPIE DU DRAPEAU DANS LE DOSSIER IMAGE
     $resultat = move_uploaded_file($_FILES['drapeau']['tmp_name'],"image/".$drapeauASave);
 
+    $results = $db->prepare("SELECT id from pays where nom = ?");
+    if($results) {
+        $array = array($paysASave);
+        $results = $db->execute_prepared_query($array);
+        if ($results) {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "http://localhost/24h/24h-Equipe-2/Web/content/createIcon?pays=".$results[0]["id"].".php");
+            curl_setopt($ch, CURLOPT_HEADER, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_close($ch);
+        }
+    }
+
 }
 
 
