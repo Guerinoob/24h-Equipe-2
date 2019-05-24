@@ -7,3 +7,12 @@ button, form, a {
     width: 100px;
     margin: 0 auto;
 }
+
+.localisation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.localisation div {
+    max-width: 140px;
+}
