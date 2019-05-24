@@ -1,5 +1,5 @@
 <?php
-include('../includes/utils_page.php');
+include_once('../includes/utils_page.php');
 get_header();
 
 if(isset($_POST['submit'])){

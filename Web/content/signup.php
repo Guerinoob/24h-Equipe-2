@@ -16,10 +16,9 @@ if(isset($_POST['submit'])){
     }
     else{
         $username = $_POST['username'];
-        $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $user_id = insert_user($username, $email, $password);
+        $user_id = insert_user($username, $password);
 
         if(!$user_id){
             echo 'Erreur';
@@ -36,8 +35,6 @@ if(isset($_POST['submit'])){
 <form method="POST" action="">
     <fieldset>
         <legend>Inscription</legend>
-
-        <label for="email">Email </label><input type="email" name="email" id="email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" />
 
         <label for="username">Username </label><input type="text" id="username" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>" />
 
