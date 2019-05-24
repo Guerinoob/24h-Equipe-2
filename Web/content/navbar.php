@@ -1,5 +1,5 @@
 
-<nav class="navbar has-background-grey-dark" role="navigation" aria-label="main navigation" style="margin-bottom: 50px;">
+<nav class="navbar has-background-grey-dark" role="navigation" aria-label="main navigation" style="">
 
     <div id="navbarBasicExample" class="navbar-menu is-active">
 
@@ -29,6 +29,10 @@
                 if($user){
                     if(is_exportateur($user->get('id'))){
                         ?>
+                        <a href="ajouter_variete.php" class="navbar-item">
+                            Ajouter une variété
+                        </a>
+
                         <a href="voir_commandes_exportateur.php" class="navbar-item">
                             Voir les commandes
                         </a>
