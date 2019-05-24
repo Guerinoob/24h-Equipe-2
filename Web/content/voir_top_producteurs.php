@@ -19,6 +19,12 @@ else {
         $prod_totale += $pays['production_arabica'] + $pays['production_robusta'];
     }
 
+    $user = get_logged_user();
+    if(is_admin($user->get('id')))
+    {
+        echo '<input type="button" value="ajouter pays" onclick="ajouterPays()">';
+        echo '<input type="button" value="modifier pays" onclick="modifierPays()">';
+    }
 
     echo '<h1>Visualiser les 20 plus gros producteurs</h1>';
 
@@ -65,3 +71,15 @@ else {
 
 }
 get_footer();
+?>
+
+<script language="JavaScript" type="text/javascript">
+    function ajouterPays()
+    {
+        document.location="ajoutPays.php";
+    }
+    function modifierPays()
+    {
+        document.location="modifierPays.php";
+    }
+</script>
