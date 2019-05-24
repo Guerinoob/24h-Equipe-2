@@ -8,7 +8,8 @@ public class Foret extends Unite {
     /**
      * Default constructor
      */
-    public Foret() {
+    public Foret(int lig, int col) {
+        super(lig, col);
     }
 
 }

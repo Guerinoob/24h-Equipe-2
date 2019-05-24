@@ -9,7 +9,8 @@ public class Terre extends Unite {
      * Default constructor
      */
 
-    public Terre() {
+    public Terre(int lig, int col) {
+        super(lig, col);
     }
 
 
