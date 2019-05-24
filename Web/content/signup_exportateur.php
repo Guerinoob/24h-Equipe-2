@@ -172,3 +172,5 @@ if(isset($_POST['submit'])){
 
 
 get_footer();
+
+?>
