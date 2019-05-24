@@ -33,7 +33,6 @@ if($user){
                             if($db->execute_prepared_query($args)){
                                 echo 'La commande a été passée !';
 
-
                             }
                             else{
                                 echo 'Erreur execute';
