@@ -6,7 +6,7 @@ import java.util.*;
  */
 public class Position {
     private int ligne;
-    private char colonne;
+    private int colonne;
     /**
      * Default constructor
      */
@@ -26,7 +26,7 @@ public class Position {
     /**
      * @return
      */
-    public char getColonne() {
+    public int getColonne() {
         return this.colonne;
     }
 

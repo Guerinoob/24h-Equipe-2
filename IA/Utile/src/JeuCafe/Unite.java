@@ -33,7 +33,7 @@ public class Unite {
     /**
      * @return
      */
-    public boolean occupée() {
+    public boolean occupee() {
         // TODO implement here
         return false;
     }
