@@ -1,0 +1,9 @@
+button, form, a {
+    margin-top: 40px;
+}
+
+.stroke-line {
+    border-bottom: dodgerblue solid 3px;
+    width: 100px;
+    margin: 0 auto;
+}
