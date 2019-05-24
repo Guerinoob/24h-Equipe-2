@@ -53,7 +53,7 @@ if(isset($_POST['submit'])){
 
 ?>
 
-    <section class="hero is-primary is-primary is-fullheight">
+    <section class="hero has-background-grey-darker is-fullheight">
         <div class="hero-body has-text-centered">
             <div class="container">
                 <div class="column is-6 is-offset-3">
