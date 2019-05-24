@@ -74,6 +74,10 @@
                 <a href="about.php" class="navbar-item">
                     A propos
                 </a>
+
+                <a href="carte.php" class="navbar-item">
+                    Carte
+                </a>
             </div>
         </div>
 
