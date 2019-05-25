@@ -129,15 +129,22 @@ public class Ilot {
     {
     	Unite[] listeUnit = new Unite[] {};
     	int i=0;
-    	for(int j=0; j<listeUnit.length; j++)
+    	int j=0;
+    	while(j<this.listeUnite.length && listeUnit.length < 6)
     	{
     		if(listeUnit[j].getParcelle() == unit.getParcelle())
     		{
     			listeUnit[i] = listeUnit[j];
     			i++;
     		}
+    		j++;
     	}
     	return listeUnit;
+    }
+    
+    public Unite getUnite(int l, int c)
+    {
+    	return this.listeUnite[l][c];
     }
 
     @Override
