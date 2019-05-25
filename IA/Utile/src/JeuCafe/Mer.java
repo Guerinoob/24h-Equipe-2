@@ -20,15 +20,4 @@ public class Mer extends Unite {
     	return "M";
     }
 
-	@Override
-	protected boolean occupee() {
-		return false;
-	}
-
-	@Override
-	protected Object getGraine() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

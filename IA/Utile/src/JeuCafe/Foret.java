@@ -20,15 +20,4 @@ public class Foret extends Unite {
     	return "F";
     }
 
-	@Override
-	protected boolean occupee() {
-		return false;
-	}
-
-	@Override
-	protected Object getGraine() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
