@@ -1,0 +1,21 @@
+package JeuCafe;
+
+public class Main {
+    public static void main(String[] args) {
+        //Ilot.convertirStringToInteger("1:1:1:1:1:1:1:1:1:1|2:2:2:2:2:2:2:2:2:2");
+    	try {
+            ClientUDP udp = new ClientUDP();
+            udp.connect("172.16.97.13", 8001);
+            udp.send("#Caen2");
+
+            System.out.println(udp.receive());
+
+            System.out.println(udp.receive());
+            
+            System.out.println("A:5");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

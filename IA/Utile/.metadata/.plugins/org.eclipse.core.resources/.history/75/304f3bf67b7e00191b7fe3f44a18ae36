@@ -1,0 +1,41 @@
+package JeuCafe;
+import java.util.*;
+
+/**
+ * 
+ */
+public class Unite {
+
+    private Position position;
+
+    /**
+     * Default constructor
+     */
+    public Unite(int lig, char col) {
+        this.position = new Position(lig, col);
+    }
+
+
+
+    /**
+     * 
+     */
+
+
+    /**
+     * @return
+     */
+    public Position getPosition() {
+        // TODO implement here
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    public boolean occupée() {
+        // TODO implement here
+        return false;
+    }
+
+}

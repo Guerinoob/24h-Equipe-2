@@ -1,0 +1,21 @@
+package JeuCafe;
+
+/**
+ * 
+ */
+public class Terre extends Unite {
+
+    /**
+     * Default constructor
+     */
+
+    public Terre(int lig, int col) {
+        super(lig, col);
+    }
+
+    public String toString() {
+    	return "T";
+    	
+    }
+
+}

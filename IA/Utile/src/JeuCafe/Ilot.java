@@ -142,8 +142,15 @@ public class Ilot {
 
     @Override
     public String toString() {
-        return "Ilot{" +
-                "listeUnite=" + Arrays.toString(listeUnite) +
-                '}';
+    	String message = "";
+    	for(int ligne=0 ; ligne<10 ; ligne++)
+    	{
+    		for(int colonne=0 ; colonne<10 ; colonne++)
+        	{
+        		message += listeUnite[ligne][colonne].toString() + "|";
+        	}
+    		message += "\n";
+    	}
+        return message;
     }
 }
