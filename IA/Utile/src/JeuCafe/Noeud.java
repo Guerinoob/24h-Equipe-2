@@ -84,9 +84,9 @@ public class Noeud {
         int cpt = 0;
         for(int i=0 ; i<tabUnite.length ; i++)
         {
-        	if(tabUnite[i].occupee())
+        	if(tabUnite[i].free())
         	{
-        		if(((Terre)tabUnite[i]).getGraine().getCouleur() == couleur)
+        		if(((Terre)tabUnite[i]).graine == couleur)
         		{
         			cpt++;
         		}
