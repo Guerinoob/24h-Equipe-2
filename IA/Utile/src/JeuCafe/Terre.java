@@ -14,6 +14,10 @@ public class Terre extends Unite {
         graine = null;
     }
 
+    public Terre(Terre terre) {
+        super(terre);
+    }
+
     public String toString() {
     	return "T";
     }
@@ -27,6 +31,5 @@ public class Terre extends Unite {
     public Graine getGraine() {
         return this.graine;
     }
-
 
 }

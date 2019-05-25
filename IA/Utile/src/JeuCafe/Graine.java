@@ -13,6 +13,10 @@ public class Graine {
         this.couleur = couleur;
     }
 
+    public Graine(Graine graine) {
+        this.couleur = graine.getCouleur();
+    }
+
     public Couleur getCouleur() {
         return couleur;
     }

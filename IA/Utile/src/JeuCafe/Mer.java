@@ -12,6 +12,10 @@ public class Mer extends Unite {
         super(lig, col);
     }
 
+	public Mer(Mer mer) {
+		super(mer);
+	}
+
     public String toString() {
     	return "M";
     }
