@@ -74,7 +74,38 @@ public class Noeud {
 
 
     public int getScore(){
-        return 0;
+    	if(pere == null) {
+    		return 0;
+    	}
+    	
+		int score = pere.getScore();
+    	
+    	Unite[] tabUnite = this.ilot.unitesDeLaParcellePour(this.ilot.getUnite(ligne,colonne));
+        int cpt = 0;
+        for(int i=0 ; i<tabUnite.length ; i++)
+        {
+        	if(tabUnite[i].occupee())
+        	{
+        		if(((Terre)tabUnite[i]).getGraine().getCouleur() == couleur)
+        		{
+        			cpt++;
+        		}
+        		else
+        		{
+        			cpt--;
+        		}
+        	}
+        }
+        if(cpt > 0)
+        {
+        	score += tabUnite.length;
+        }
+        else if(cpt < 0)
+        {
+        	score -= tabUnite.length;
+        }
+        
+        
     }
 
 }
