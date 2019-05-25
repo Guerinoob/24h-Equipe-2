@@ -37,4 +37,9 @@ public abstract class Unite {
     }
 
 
+
+    public boolean free(){
+        return false;
+    }
+
 }
