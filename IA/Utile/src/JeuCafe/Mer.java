@@ -12,4 +12,8 @@ public class Mer extends Unite {
         super(lig, col);
     }
 
+    public String toString() {
+    	return "M";
+    }
+
 }

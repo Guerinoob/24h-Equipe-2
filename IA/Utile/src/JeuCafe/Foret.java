@@ -12,4 +12,8 @@ public class Foret extends Unite {
         super(lig, col);
     }
 
+    public String toString() {
+    	return "F";
+    }
+
 }
