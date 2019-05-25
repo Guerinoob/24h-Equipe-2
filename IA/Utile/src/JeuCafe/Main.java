@@ -20,10 +20,13 @@ public class Main {
             udp.send("Caen2");
 
             System.out.println(udp.receive());
+            String map = udp.receive();
+            map = map.substring(map.indexOf("MAP=")+4, map.length());
 
-            System.out.println(udp.receive());
+            Ilot test = new Ilot(Ilot.convertirStringToInteger(map));
 
-            Ilot test = new Ilot(Ilot.convertirStringToInteger(udp.receive()));
+            System.out.println(test);
+
 
         } catch (Exception e) {
             e.printStackTrace();

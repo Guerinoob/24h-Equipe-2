@@ -52,6 +52,7 @@ public class Ilot {
 
 
     public static int[][] convertirStringToInteger(String map) {
+        System.out.println("1");
         int[][] matrice = new int[10][10];
         int ligne = 0, colonne = 0;
         final String delims = "[:|]+";
