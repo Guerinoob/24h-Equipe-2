@@ -32,5 +32,8 @@ public class Terre extends Unite {
         return this.graine;
     }
 
+    public void supprimerGraine() {
+        this.graine = null;
+    }
 
 }
