@@ -116,7 +116,7 @@ public class Ilot {
         } else {
             return i;
         }
-    }
+    }	
     
     public Unite[] unitesDeLaParcellePour(Unite unit)
     {

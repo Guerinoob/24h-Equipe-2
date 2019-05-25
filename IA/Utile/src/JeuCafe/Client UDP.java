@@ -5,13 +5,13 @@ import java.util.*;
  * 
  */
 /*
-public class Client UDP {
+public class ClientUDP {
 
     /**
      * Default constructor
      */
 /*
-    public Client UDP() {
+    public ClientUDP() {
 
     }
 
