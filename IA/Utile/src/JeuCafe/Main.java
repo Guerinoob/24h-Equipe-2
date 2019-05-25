@@ -22,12 +22,13 @@ public class Main {
 
         try {
             ClientUDP udp = new ClientUDP();
-            udp.connect("172.16.97.194", 8013);
+            udp.connect("172.16.97.13", 8001);
             udp.send("Caen2");
 
             System.out.println(udp.receive());
 
             String map = udp.receive();
+
             map = map.substring(map.indexOf("MAP=")+4, map.length());
             Ilot ilot = new Ilot(Ilot.convertirStringToInteger(map));
 
