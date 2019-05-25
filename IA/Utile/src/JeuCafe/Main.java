@@ -24,9 +24,12 @@ public class Main {
             map = map.substring(map.indexOf("MAP=")+4, map.length());
 
             Ilot test = new Ilot(Ilot.convertirStringToInteger(map));
-
+            	
             System.out.println(test);
-
+            ArrayList<Unite> listeUnite = test.unitesDeLaParcellePour(test.getUnite(0, 0));
+            for(Unite unit : listeUnite) {
+            	System.out.println(unit);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

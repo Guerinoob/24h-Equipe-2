@@ -125,21 +125,27 @@ public class Ilot {
         }
     }	
     
-    public Unite[] unitesDeLaParcellePour(Unite unit)
+    public ArrayList<Unite> unitesDeLaParcellePour(Unite unit)
     {
-    	Unite[] listeUnit = new Unite[] {};
-    	int i=0;
+    
+    	ArrayList<Unite> listeUnits = new ArrayList<Unite>();
+    	int k=0;
     	int j=0;
-    	while(j<this.listeUnite.length && listeUnit.length < 6)
+    	int i=0;
+    	while(i<10 && listeUnits.size() < 6) {
+    		j=0;
+    	while(j<10 && listeUnits.size() < 6)
     	{
-    		if(listeUnit[j].getParcelle() == unit.getParcelle())
+    		
+    		if(this.listeUnite[i][j].getParcelle() == unit.getParcelle())
     		{
-    			listeUnit[i] = listeUnit[j];
-    			i++;
+    			listeUnits.add(listeUnite[i][j]);
     		}
     		j++;
     	}
-    	return listeUnit;
+    	i++;
+    	}
+    	return listeUnits;
     }
     
     public Unite getUnite(int l, int c)

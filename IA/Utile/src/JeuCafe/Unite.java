@@ -34,7 +34,7 @@ public abstract class Unite {
      */
     public Position getPosition() {
         // TODO implement here
-        return null;
+        return position;
     }
 
     /**
