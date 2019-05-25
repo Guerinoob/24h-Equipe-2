@@ -22,6 +22,10 @@ public class Terre extends Unite {
     public String toString() {
     	return "T";
     }
+    
+    public void rmGraine() {
+    	graine = null;
+    }
 
 
     public boolean free(){

@@ -126,16 +126,15 @@ public class Noeud {
 		{
 			return 0;
 		}
-		else if(((Terre)ilot.getUnite(ligne, colonne)).graine != couleur)
+		else if(((Terre)ilot.getUnite(ligne, colonne)).graine != Couleur.BLANC)
 		{
 			return 0;
 		}
 		else
 		{
-			
-			return 1+getNbVoisin(ligne-1,colon)
+			((Terre)ilot.getUnite(ligne, colonne)).rmGraine();
+			return 1 + getNbVoisin(ligne-1,colonne,ilot) + getNbVoisin(ligne,colonne-1,ilot) + getNbVoisin(ligne+1,colonne,ilot) + getNbVoisin(ligne,colonne+1,ilot);
 		}
-		return 0;
 	}
 
 }
