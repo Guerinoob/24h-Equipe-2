@@ -8,14 +8,12 @@ public abstract class Unite {
 
     private Position position;
     private Parcelle parcelle;
-    private Graine graine;
 
     /**
      * Default constructor
      */
     public Unite(int lig, int col) {
         this.position = new Position(lig, col);
-        graine = null;
     }
 
 
@@ -36,17 +34,6 @@ public abstract class Unite {
      */
     public Position getPosition() {
         return this.position;
-    }
-
-    /**
-     * @return
-     */
-    public boolean occupee() {
-        return graine != null;
-    }
-
-    public Graine getGraine() {
-        return this.graine;
     }
 
 
