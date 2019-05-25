@@ -13,5 +13,8 @@ public class Terre extends Unite {
         super(lig, col);
     }
 
+    public String toString() {
+    	return "T";
+    }
 
 }
