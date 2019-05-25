@@ -16,6 +16,7 @@ public class Terre extends Unite {
 
     public Terre(Terre terre) {
         super(terre);
+    	this.graine = terre.graine;
     }
 
     public String toString() {

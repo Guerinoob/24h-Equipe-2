@@ -11,6 +11,7 @@ public class Noeud {
     public int ligne ;
     Ilot ilot;//coup déja fait
     int profondeur;
+    int longueurVoisin;
     //Dans Ilot -> Calculer les points des Joueurs
     //          -> Les coups à jouer
     //          ->Savoir si Partie Terminé
@@ -84,9 +85,9 @@ public class Noeud {
         int cpt = 0;
         for(int i=0 ; i<tabUnite.length ; i++)
         {
-        	if(tabUnite[i].free())
+        	if(!tabUnite[i].free())
         	{
-        		if(((Terre)tabUnite[i]).graine == couleur)
+        		if(((Terre)tabUnite[i]).graine == Couleur.BLANC)
         		{
         			cpt++;
         		}
@@ -105,8 +106,37 @@ public class Noeud {
         	score -= tabUnite.length;
         }
         
+        score += getScoreVoisin(ligne,colonne);
+        		
         return score;
     }
+
+	private int getScoreVoisin(int ligne, int colonne) {
+		Ilot ilotTmp = new Ilot(ilot);
+		
+		return getNbVoisin(ligne, colonne, ilotTmp);
+	}
+
+	private int getNbVoisin(int ligne, int colonne, Ilot ilot) {
+		if(ligne < 0  ||  ligne > 9  ||  colonne < 0  ||  colonne > 9)
+		{
+			return 0;
+		}
+		if(ilot.getUnite(ligne, colonne).free())
+		{
+			return 0;
+		}
+		else if(((Terre)ilot.getUnite(ligne, colonne)).graine != couleur)
+		{
+			return 0;
+		}
+		else
+		{
+			
+			return 1+getNbVoisin(ligne-1,colon)
+		}
+		return 0;
+	}
 
 }
 
