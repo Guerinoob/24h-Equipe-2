@@ -16,6 +16,11 @@ public abstract class Unite {
         this.position = new Position(lig, col);
     }
 
+    public Unite(Unite unite){
+        this.position = new Position(unite.position);
+        this.parcelle = new Parcelle(unite.parcelle);
+    }
+
 
     /**
      * 
