@@ -127,7 +127,7 @@ public class Noeud {
         	score -= tabUnite.length;
         }
         
-        
+        return score;
     }
 
 }
