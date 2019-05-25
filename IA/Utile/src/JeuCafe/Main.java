@@ -33,8 +33,14 @@ public class Main {
 
             String message = udp.receive();
 
+            /*String map = "3:9:3:1:9:3:1:9:3:9|2:8:6:4:12:6:4:12:2:8|6:12:35:41:3:9:35:41:6:12|75:11:38:44:6:12:38:44:11:75|74:10:11:75:3:9:75:11:10:74|74:10:14:78:6:12:78:14:10:74|74:14:47:7:5:5:13:47:14:74|74:7:9:39:37:37:45:3:13:74|66:73:14:7:9:3:13:14:67:72|70:68:69:77:14:14:71:69:68:76|";
+            Ilot ilot = new Ilot(Ilot.convertirStringToInteger(map));*/
+            //System.out.println(ilot);
+            //String message = "20:coup adversaire:D:7";
+
             Noeud objectif = null;
             Noeud first = null;
+            boolean debut_passe = false;
 
             if(message.charAt(0) == '1'){ // À nous de jouer
                 Random r = new Random();
@@ -55,7 +61,8 @@ public class Main {
 
                 first = new Noeud(ligne, colonne, Couleur.BLANC, ilot, 0);
                 ilot.jouer(move, Couleur.BLANC);
-                objectif = alphaBeta.maxAmeliore(first, -1000).noeud;
+                first.genererFils();
+                objectif = first;
 
 
             } else if(message.charAt(0) == '2'){ // À l'adversaire  de jouer
@@ -75,10 +82,6 @@ public class Main {
                 ilot.jouer(move, Couleur.NOIR);
                 first.genererFils();
 
-                System.out.println(first);
-                for(Noeud enfant : first.enfants){
-                    System.out.println(enfant+" | "+enfant.ligne+" | "+enfant.colonne+" | "+enfant.pere);
-                }
 
             } else if(message.charAt(0) == '8'){
                 //Fin
@@ -88,17 +91,17 @@ public class Main {
 
             while((message = udp.receive()).charAt(0) != '8'){
                 if(message.charAt(0) == '1'){
-                    alphaBeta.PRONFONDEUR_MAX += 3;
-                    objectif = alphaBeta.maxAmeliore(dernierCoup, -1000).noeud;
+                    if(dernierCoup.enfants.size() == 0)
+                        dernierCoup.genererFils();
 
-                    for(int i = 0; i < 3; i++){
-                        System.out.println(i+" : "+objectif);
-                        objectif = objectif.pere;
-                    }
+                    objectif = dernierCoup.enfants.get(0);
+
 
                     dernierCoup = objectif;
+                    dernierCoup.genererFils();
 
-                    udp.send(Ilot.getMove(dernierCoup.colonne+1, dernierCoup.ligne+1));
+                    udp.send(Ilot.getMove(dernierCoup.colonne, dernierCoup.ligne));
+                    System.out.println("Nous : "+Ilot.getMove(dernierCoup.colonne, dernierCoup.ligne));
 
 
                 }
@@ -108,9 +111,25 @@ public class Main {
 
                     String move = message.substring(index);
 
-                    Noeud coup = dernierCoup.getEnfantFromMove(move);
+                    if(move.contains("illegal")){
 
-                    dernierCoup = coup;
+                    }
+                    else{
+                        System.out.println("ejrtçoijerti : "+move);
+
+                        Noeud coup = dernierCoup.getEnfantFromMove(move);
+
+                        ilot.jouer(move, Couleur.NOIR);
+
+                        if(coup != null){
+                            coup.genererFils();
+
+
+                            dernierCoup = coup;
+                        }
+
+                    }
+
                 }
 
                 System.out.println(dernierCoup.getScore());

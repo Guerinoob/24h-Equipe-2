@@ -9,7 +9,7 @@ public class AlphaBeta {
     }
     public Duo maxAmeliore(Noeud n,int actuel){
         if(n.profondeur != PRONFONDEUR_MAX){ //Si on peut generer ses enfants
-            if(n.enfants.size() == 0)
+            //if(n.enfants.size() == 0)
                 n.genererFils();
 
             if(n.enfants.size() == 0) { //Si il a vraiment pas d'enfats
@@ -32,7 +32,7 @@ public class AlphaBeta {
     }
     public Duo minAmeliore(Noeud n,int actuel) {
         if(n.profondeur != PRONFONDEUR_MAX){ //Si on peut generer ses enfants
-            if(n.enfants.size() == 0)
+            //if(n.enfants.size() == 0)
                 n.genererFils();
 
             if(n.enfants.size() == 0) {

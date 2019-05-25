@@ -46,8 +46,6 @@ public class Noeud {
 
 
         for(String move : this.ilot.getAllMoves()){
-            System.out.println("Move : "+move);
-
             Ilot new_ilot = new Ilot(this.ilot);
 
 
@@ -107,7 +105,7 @@ public class Noeud {
         	score -= tabUnite.size();
         }
         
-        score += getScoreVoisin(ligne,colonne);
+        //score += getScoreVoisin(ligne,colonne);
         		
         return score;
     }

@@ -212,7 +212,7 @@ public class Ilot {
         List<String> list = new ArrayList<>();
 
         for(int i = 0; i < 10;  i++){
-            String s = ((char)(i + 'A'))+":"+ligne;
+            String s = ((char)(i + 'A'))+":"+(ligne+1);
 
 
 
@@ -231,7 +231,7 @@ public class Ilot {
         }
 
         for(int i = 0; i < 10; i++){
-            String s = ((char)(colonne + 'A'))+":"+i;
+            String s = ((char)(colonne + 'A'))+":"+(i+1);
 
             if(listeUnite[i][colonne].free()){
                 Parcelle parcelle = listeUnite[i][colonne].getParcelle();
