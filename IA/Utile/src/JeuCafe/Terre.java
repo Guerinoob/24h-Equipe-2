@@ -5,7 +5,7 @@ package JeuCafe;
  */
 public class Terre extends Unite {
 
-    private Graine graine;
+    public Couleur graine;
     /**
      * Default constructor
      */
@@ -22,19 +22,12 @@ public class Terre extends Unite {
     public String toString() {
     	return "T";
     }
-    /**
-     * @return
-     */
-    public boolean occupee() {
-        return graine != null;
-    }
 
-    public Graine getGraine() {
-        return this.graine;
-    }
 
-    public void supprimerGraine() {
-        this.graine = null;
+    public boolean free(){
+        if(graine == null) return true;
+
+        return false;
     }
 
 }

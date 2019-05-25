@@ -186,15 +186,27 @@ public class Ilot {
         for(int i = 0; i < 10;  i++){
             String s = ((char)(i + 'A'))+":"+ligne;
 
-            //if(listeUnite[ligne][i].free())
-            list.add(s);
+
+
+            if(listeUnite[ligne][i].free()){
+                Parcelle parcelle = listeUnite[ligne][i].getParcelle();
+                if(dernier.getParcelle() != parcelle && avant_dernier != null && avant_dernier.getParcelle() != parcelle){
+                    list.add(s);
+                }
+            }
+
         }
 
         for(int i = 0; i < 10; i++){
             String s = ((char)(colonne + 'A'))+":"+i;
 
-            //if(listeUnite[ligne][i].free())
-            list.add(s);
+            if(listeUnite[i][colonne].free()){
+                Parcelle parcelle = listeUnite[i][colonne].getParcelle();
+                if(dernier.getParcelle() != parcelle && avant_dernier != null && avant_dernier.getParcelle() != parcelle){
+                    list.add(s);
+                }
+            }
+
         }
 
         return list;
@@ -209,7 +221,7 @@ public class Ilot {
         int colonne = colonneChar - 'A';
         int ligne = Integer.parseInt(ligneString);
 
-        //listeUnite[ligne][colonne].couleur = couleur;
+        ((Terre)listeUnite[ligne][colonne]).graine = couleur;
 
         avant_dernier = dernier;
         dernier = listeUnite[ligne][colonne];

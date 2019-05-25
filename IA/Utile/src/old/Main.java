@@ -3,6 +3,7 @@ package old;
 import JeuCafe.AlphaBeta;
 import JeuCafe.Couleur;
 import JeuCafe.Ilot;
+import JeuCafe.Position;
 
 import java.net.SocketException;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class Main {
 
         try {
             ClientUDP udp = new ClientUDP();
-            udp.connect("172.16.97.13", 8001);
+            udp.connect("172.16.97.194", 8013);
             udp.send("Caen2");
 
             System.out.println(udp.receive());
@@ -60,6 +61,17 @@ public class Main {
 
                 }
             } else if(message.charAt(0) == '2'){ // À l'adversaire  de jouer
+                String pattern = "adversaire:";
+                int index = message.indexOf(pattern) + pattern.length();
+
+                String move = message.substring(index);
+
+                Position pos = Ilot.getPosition(move);
+                int ligne = pos.getLigne();
+                int colonne = pos.getColonne();
+
+                first = new JeuCafe.Noeud(ligne, colonne, Couleur.NOIR, ilot, 0);
+                ilot.jouer(move, Couleur.NOIR);
 
             } else if(message.charAt(0) == '8'){
                 //Fin
