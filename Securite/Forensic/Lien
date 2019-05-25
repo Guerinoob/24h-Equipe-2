@@ -1,1 +1,6 @@
 Wireshark  https://www.wireshark.org/download.html
+peepdf pour analyser un pdf
+./peepdf.py -i -f fcexploit.pdf
+CA nous donne des objets suspects
+  ->object objet ca nous donne des infos complémentaires
+  ->object objet > trace.txt Pour avoir les données
