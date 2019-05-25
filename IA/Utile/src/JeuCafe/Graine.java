@@ -3,12 +3,12 @@ package JeuCafe;
 /**
  * 
  */
-public class Graines {
+public class Graine {
 
     /**
      * Default constructor
      */
-    public Graines() {
+    public Graine() {
     }
 
 
