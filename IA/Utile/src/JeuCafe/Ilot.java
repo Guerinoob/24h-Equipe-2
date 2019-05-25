@@ -174,6 +174,28 @@ public class Ilot {
 
     public Ilot(Ilot ilot){
 
+        Unite[][] listeIlot = new Unite[10][10];
+
+        for(int ligne = 0; ligne < 10; ligne++){
+            for(int colonne = 0; colonne < 10; colonne++){
+                if(ilot.listeUnite[ligne][colonne] instanceof Terre){
+                    Terre t = (Terre)ilot.listeUnite[ligne][colonne];
+                    listeIlot[ligne][colonne] = new Terre(t);
+                }
+
+                if(ilot.listeUnite[ligne][colonne] instanceof Mer){
+                    Mer t = (Mer)ilot.listeUnite[ligne][colonne];
+                    listeIlot[ligne][colonne] = new Mer(t);
+                }
+
+                if(ilot.listeUnite[ligne][colonne] instanceof Foret){
+                    Foret t = (Foret)ilot.listeUnite[ligne][colonne];
+                    listeIlot[ligne][colonne] = new Foret(t);
+                }
+            }
+        }
+
+        this.listeUnite = listeIlot;
     }
 
 
@@ -196,8 +218,13 @@ public class Ilot {
 
             if(listeUnite[ligne][i].free()){
                 Parcelle parcelle = listeUnite[ligne][i].getParcelle();
-                if(dernier.getParcelle() != parcelle && avant_dernier != null && avant_dernier.getParcelle() != parcelle){
-                    list.add(s);
+
+                if(dernier.getParcelle() != parcelle){
+                    if(avant_dernier == null)
+                        list.add(s);
+                    else if(avant_dernier.getParcelle() != parcelle){
+                        list.add(s);
+                    }
                 }
             }
 
@@ -208,8 +235,13 @@ public class Ilot {
 
             if(listeUnite[i][colonne].free()){
                 Parcelle parcelle = listeUnite[i][colonne].getParcelle();
-                if(dernier.getParcelle() != parcelle && avant_dernier != null && avant_dernier.getParcelle() != parcelle){
-                    list.add(s);
+
+                if(dernier.getParcelle() != parcelle){
+                    if(avant_dernier == null)
+                        list.add(s);
+                    else if(avant_dernier.getParcelle() != parcelle){
+                        list.add(s);
+                    }
                 }
             }
 
@@ -221,11 +253,11 @@ public class Ilot {
 
 
     public void jouer(String move, Couleur couleur){
-        char colonneChar = move.split(":")[0].charAt(0);
-        String ligneString = move.split(":")[1];
+        Position pos = getPosition(move);
 
-        int colonne = colonneChar - 'A';
-        int ligne = Integer.parseInt(ligneString);
+        int colonne = pos.getColonne();
+        int ligne = pos.getLigne();
+
 
         ((Terre)listeUnite[ligne][colonne]).graine = couleur;
 
@@ -236,7 +268,7 @@ public class Ilot {
     public static String getMove(int colonne, int ligne){
         String s = "";
 
-        s = ((char)(colonne+'A'))+":"+ligne;
+        s = ((char)(colonne+'A'))+":"+(ligne+1);
         return s;
     }
 
@@ -246,7 +278,7 @@ public class Ilot {
         String ligneString = move.split(":")[1];
 
         int colonne = colonneChar - 'A';
-        int ligne = Integer.parseInt(ligneString);
+        int ligne = Integer.parseInt(ligneString)-1;
 
         return new Position(ligne, colonne);
     }

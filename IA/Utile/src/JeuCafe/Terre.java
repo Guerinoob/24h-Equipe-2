@@ -27,7 +27,7 @@ public class Terre extends Unite {
     	graine = null;
     }
 
-
+    @Override
     public boolean free(){
         if(graine == null) return true;
 

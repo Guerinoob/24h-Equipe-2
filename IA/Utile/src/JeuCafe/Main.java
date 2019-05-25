@@ -1,10 +1,5 @@
 package JeuCafe;
 
-import JeuCafe.AlphaBeta;
-import JeuCafe.Couleur;
-import JeuCafe.Ilot;
-import JeuCafe.Position;
-
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,24 +17,24 @@ public class Main {
 
         try {
             ClientUDP udp = new ClientUDP();
-            udp.connect("172.16.97.13", 8001);
+            udp.connect("172.16.97.194", 8013);
             udp.send("Caen2");
 
             System.out.println(udp.receive());
 
             String map = udp.receive();
-
             map = map.substring(map.indexOf("MAP=")+4, map.length());
+            System.out.println(map);
             Ilot ilot = new Ilot(Ilot.convertirStringToInteger(map));
 
             System.out.println(ilot);
 
             AlphaBeta alphaBeta = new AlphaBeta();
 
-            String message = "10";
+            String message = udp.receive();
 
-            JeuCafe.Noeud objectif = null;
-            JeuCafe.Noeud first = null;
+            Noeud objectif = null;
+            Noeud first = null;
 
             if(message.charAt(0) == '1'){ // À nous de jouer
                 Random r = new Random();
@@ -47,20 +42,22 @@ public class Main {
                 int ligne = r.nextInt(10) + 1;
                 int colonne = r.nextInt(10) + 1;
 
-                String move = Ilot.getMove(colonne, ligne);
 
-                while(!ilot.listeUnite[ligne][colonne].free()){
+                do{
                     ligne = r.nextInt(10);
                     colonne = r.nextInt(10);
 
-                    move = Ilot.getMove(colonne, ligne);
 
 
-                    first = new JeuCafe.Noeud(ligne, colonne, Couleur.BLANC, ilot, 0);
-                    ilot.jouer(move, Couleur.BLANC);
-                    objectif = alphaBeta.maxAmeliore(first, -1000).noeud;
+                }while(!ilot.listeUnite[ligne][colonne].free());
 
-                }
+                String move = Ilot.getMove(colonne+1, ligne+1);
+
+                first = new Noeud(ligne, colonne, Couleur.BLANC, ilot, 0);
+                ilot.jouer(move, Couleur.BLANC);
+                objectif = alphaBeta.maxAmeliore(first, -1000).noeud;
+
+
             } else if(message.charAt(0) == '2'){ // À l'adversaire  de jouer
                 String pattern = "adversaire:";
                 int index = message.indexOf(pattern) + pattern.length();
@@ -71,14 +68,23 @@ public class Main {
                 int ligne = pos.getLigne();
                 int colonne = pos.getColonne();
 
-                first = new JeuCafe.Noeud(ligne, colonne, Couleur.NOIR, ilot, 0);
+                System.out.println(move);
+                System.out.println("("+ligne+", "+colonne+")");
+
+                first = new Noeud(ligne, colonne, Couleur.NOIR, ilot, 0);
                 ilot.jouer(move, Couleur.NOIR);
+                first.genererFils();
+
+                System.out.println(first);
+                for(Noeud enfant : first.enfants){
+                    System.out.println(enfant+" | "+enfant.ligne+" | "+enfant.colonne+" | "+enfant.pere);
+                }
 
             } else if(message.charAt(0) == '8'){
                 //Fin
             }
 
-            JeuCafe.Noeud dernierCoup = first;
+            Noeud dernierCoup = first;
 
             while((message = udp.receive()).charAt(0) != '8'){
                 if(message.charAt(0) == '1'){
@@ -86,12 +92,15 @@ public class Main {
                     objectif = alphaBeta.maxAmeliore(dernierCoup, -1000).noeud;
 
                     for(int i = 0; i < 3; i++){
+                        System.out.println(i+" : "+objectif);
                         objectif = objectif.pere;
                     }
 
                     dernierCoup = objectif;
 
-                    udp.send(Ilot.getMove(dernierCoup.colonne, dernierCoup.ligne));
+                    udp.send(Ilot.getMove(dernierCoup.colonne+1, dernierCoup.ligne+1));
+
+
                 }
                 else{
                     String pattern = "adversaire:";
@@ -99,10 +108,12 @@ public class Main {
 
                     String move = message.substring(index);
 
-                    JeuCafe.Noeud coup = dernierCoup.getEnfantFromMove(move);
+                    Noeud coup = dernierCoup.getEnfantFromMove(move);
 
                     dernierCoup = coup;
                 }
+
+                System.out.println(dernierCoup.getScore());
             }
 
         } catch (Exception e) {

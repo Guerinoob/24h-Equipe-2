@@ -46,14 +46,15 @@ public class Noeud {
 
 
         for(String move : this.ilot.getAllMoves()){
+            System.out.println("Move : "+move);
+
             Ilot new_ilot = new Ilot(this.ilot);
 
 
-            char colonneChar = move.split(":")[0].charAt(0);
-            String ligneString = move.split(":")[1];
+            Position pos = Ilot.getPosition(move);
 
-            int colonne = colonneChar - 'A';
-            int ligne = Integer.parseInt(ligneString);
+            int colonne = pos.getColonne();
+            int ligne = pos.getLigne();
 
             Noeud n;
             Couleur coul;

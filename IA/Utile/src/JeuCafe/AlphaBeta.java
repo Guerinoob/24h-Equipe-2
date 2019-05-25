@@ -2,14 +2,16 @@ package JeuCafe;
 import java.util.LinkedList;
 
 public class AlphaBeta {
-    public int PRONFONDEUR_MAX = 3;
+    public int PRONFONDEUR_MAX = 0;
     public AlphaBeta(){
         //debut =  maxAmeliore(debut, -2).noeud;
 
     }
     public Duo maxAmeliore(Noeud n,int actuel){
         if(n.profondeur != PRONFONDEUR_MAX){ //Si on peut generer ses enfants
-            n.genererFils();
+            if(n.enfants.size() == 0)
+                n.genererFils();
+
             if(n.enfants.size() == 0) { //Si il a vraiment pas d'enfats
                 return new Duo(n, n.getScore()); //Partie nulle
             }
@@ -30,7 +32,9 @@ public class AlphaBeta {
     }
     public Duo minAmeliore(Noeud n,int actuel) {
         if(n.profondeur != PRONFONDEUR_MAX){ //Si on peut generer ses enfants
-            n.genererFils();
+            if(n.enfants.size() == 0)
+                n.genererFils();
+
             if(n.enfants.size() == 0) {
                 return new Duo(n, n.getScore());
             }
