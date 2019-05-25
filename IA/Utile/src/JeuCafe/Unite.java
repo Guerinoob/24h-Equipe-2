@@ -38,12 +38,8 @@ public abstract class Unite {
      * @return
      */
     public Position getPosition() {
-<<<<<<< HEAD
         // TODO implement here
         return position;
-=======
-        return this.position;
->>>>>>> 71f40e620ca269c60718091283e2d67fabd01e89
     }
 
 

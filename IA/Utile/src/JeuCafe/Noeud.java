@@ -81,13 +81,13 @@ public class Noeud {
     	
 		int score = pere.getScore();
     	
-    	Unite[] tabUnite = this.ilot.unitesDeLaParcellePour(this.ilot.getUnite(ligne,colonne));
+    	ArrayList<Unite> tabUnite = this.ilot.unitesDeLaParcellePour(this.ilot.getUnite(ligne,colonne));
         int cpt = 0;
-        for(int i=0 ; i<tabUnite.length ; i++)
+        for(int i=0 ; i<tabUnite.size() ; i++)
         {
-        	if(!tabUnite[i].free())
+        	if(!tabUnite.get(i).free())
         	{
-        		if(((Terre)tabUnite[i]).graine == Couleur.BLANC)
+        		if(((Terre)tabUnite.get(i)).graine == Couleur.BLANC)
         		{
         			cpt++;
         		}
@@ -99,11 +99,11 @@ public class Noeud {
         }
         if(cpt > 0)
         {
-        	score += tabUnite.length;
+        	score += tabUnite.size();
         }
         else if(cpt < 0)
         {
-        	score -= tabUnite.length;
+        	score -= tabUnite.size();
         }
         
         score += getScoreVoisin(ligne,colonne);
