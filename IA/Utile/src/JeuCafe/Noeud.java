@@ -5,10 +5,10 @@ import java.util.LinkedList;
 
 public class Noeud {
     ArrayList<Noeud> enfants  = new ArrayList<>();
-    Noeud pere;
+    public Noeud pere;
     Couleur couleur;
-    int colonne ;
-    int ligne ;
+    public int colonne ;
+    public int ligne ;
     Ilot ilot;//coup déja fait
     int profondeur;
     //Dans Ilot -> Calculer les points des Joueurs
@@ -25,48 +25,34 @@ public class Noeud {
         this.profondeur = profondeur;
     }
 
+    public Noeud getEnfantFromMove(String move){
+        Position pos = Ilot.getPosition(move);
+
+        int ligne = pos.getLigne();
+        int colonne = pos.getColonne();
+
+        for(Noeud enfant : this.enfants){
+            if(enfant.ligne == ligne && enfant.colonne == colonne){
+                return enfant;
+            }
+        }
+
+        return null;
+    }
+
 
     public void genererFils(){
-        /*try {
-            if(gagnant)
-                return;
-            Board base = new Board(plateau);
-            for (String s:base.getAllMoves()) {
 
-                Board fil = new Board(base);
-                Noeud n;
-                boolean gag = false;
-                fil.playMove(s);
-                if(fil.getWinner() != null){
-                    gag = true;
 
-                }
-                if(joueur == 2){
-                    n = new Noeud(fil,this,1,gag);
-                }else{
-                    n = new Noeud(fil,this,2,gag);
-                }
-                n.joue = s;
-                enfants.add(n);
-            }
-
-        }catch (Exception e){
-            Noeud n = new Noeud(new Board(plateau),this,1,true);
-            n.joue = "RIEN";
-            enfants.add(n);
-        }
-        */
-
-/*
         for(String move : this.ilot.getAllMoves()){
             Ilot new_ilot = new Ilot(this.ilot);
-            new_ilot.jouer(move);
+
 
             char colonneChar = move.split(":")[0].charAt(0);
             String ligneString = move.split(":")[1];
 
-            int ligne = colonneChar - 'A';
-            int colonne = Integer.parseInt(ligneString);
+            int colonne = colonneChar - 'A';
+            int ligne = Integer.parseInt(ligneString);
 
             Noeud n;
             Couleur coul;
@@ -76,24 +62,16 @@ public class Noeud {
             else
                 coul = Couleur.BLANC;
 
+            new_ilot.jouer(move, coul);
+
             n = new Noeud(ligne, colonne, coul, new_ilot, profondeur+1);
             n.pere = this;
 
             enfants.add(n);
         }
-*/
+
     }
-    public LinkedList<String> listOfMove(){
-        /*LinkedList<String> move = new LinkedList<>();
-        if(pere != null && pere.pere != null ) {
-            move.addAll(pere.listOfMove()); //LJ: Hmm... Vous remontez récursivement l'arbre pour construire la liste des coups en redescendant... ok !
-        }
-        System.out.println("Le joueur "+ joueur + " joue en "+joue);
-        move.add(this.joue);
-        return move;
-        */
-        return null;
-    }
+
 
     public int getScore(){
     	if(pere == null) {
@@ -106,9 +84,9 @@ public class Noeud {
         int cpt = 0;
         for(int i=0 ; i<tabUnite.length ; i++)
         {
-        	if(tabUnite[i].occupee())
+        	if(tabUnite[i].free())
         	{
-        		if(((Terre)tabUnite[i]).getGraine().getCouleur() == couleur)
+        		if(((Terre)tabUnite[i]).graine == couleur)
         		{
         			cpt++;
         		}
@@ -127,7 +105,7 @@ public class Noeud {
         	score -= tabUnite.length;
         }
         
-        
+        return score;
     }
 
 }

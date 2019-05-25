@@ -2,7 +2,7 @@ package JeuCafe;
 import java.util.LinkedList;
 
 public class AlphaBeta {
-    public static int PRONFONDEUR_MAX = 0;
+    public int PRONFONDEUR_MAX = 0;
     public AlphaBeta(){
         //debut =  maxAmeliore(debut, -2).noeud;
 
