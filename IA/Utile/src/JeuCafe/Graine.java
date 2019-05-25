@@ -8,10 +8,12 @@ public class Graine {
     /**
      * Default constructor
      */
-    public Graine() {
+    private Couleur couleur;
+    public Graine(Couleur couleur) {
+        this.couleur = couleur;
     }
 
-
-
-
+    public Couleur getCouleur() {
+        return couleur;
+    }
 }
