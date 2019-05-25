@@ -1,5 +1,9 @@
 package JeuCafe;
 
+import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args){
         /*Plateau plateau = Plateau.getPlateauFromFile("plateau.txt");
@@ -16,10 +20,13 @@ public class Main {
             udp.send("Caen2");
 
             System.out.println(udp.receive());
-            String recu = udp.receive();
-            System.out.println(recu);
+            String map = udp.receive();
+            map = map.substring(map.indexOf("MAP=")+4, map.length());
 
-            Ilot test = new Ilot(Ilot.convertirStringToInteger(recu));
+            Ilot test = new Ilot(Ilot.convertirStringToInteger(map));
+
+            System.out.println(test);
+
 
         } catch (Exception e) {
             e.printStackTrace();
