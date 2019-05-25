@@ -16,11 +16,15 @@ public class Terre extends Unite {
 
     public Terre(Terre terre) {
         super(terre);
-        this.graine = terre.graine;
+    	this.graine = terre.graine;
     }
 
     public String toString() {
     	return "T";
+    }
+    
+    public void rmGraine() {
+    	graine = null;
     }
 
 
