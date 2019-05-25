@@ -13,6 +13,10 @@ public class Parcelle {
     public Parcelle() {
     }
 
+    public Parcelle(Parcelle parcelle){
+        
+    }
+
     /**
      * @return
      */

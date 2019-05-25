@@ -15,7 +15,10 @@ public class Position {
         this.colonne = colonne;
     }
 
-
+    public Position (Position position){
+        this.ligne = position.getLigne();
+        this.colonne = position.getColonne();
+    }
     /**
      * @return
      */
