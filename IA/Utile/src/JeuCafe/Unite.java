@@ -37,10 +37,9 @@ public abstract class Unite {
     }
 
 
-	protected abstract boolean occupee();
 
-
-	protected abstract Object getGraine();
-
+    public boolean free(){
+        return false;
+    }
 
 }

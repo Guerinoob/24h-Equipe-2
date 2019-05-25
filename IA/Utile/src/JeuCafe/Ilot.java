@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class Ilot {
 
-    private Unite[][] listeUnite;
+    public Unite[][] listeUnite;
 
 
     /**
@@ -159,5 +159,77 @@ public class Ilot {
     		message += "\n";
     	}
         return message;
+    }
+
+
+
+
+
+
+    public Ilot(Ilot ilot){
+
+    }
+
+
+
+    private Unite avant_dernier;
+    private Unite dernier;
+
+
+    public List<String> getAllMoves(){
+
+        int ligne = dernier.getPosition().getLigne();
+        int colonne = dernier.getPosition().getColonne();
+
+        List<String> list = new ArrayList<>();
+
+        for(int i = 0; i < 10;  i++){
+            String s = ((char)(i + 'A'))+":"+ligne;
+
+            //if(listeUnite[ligne][i].free())
+            list.add(s);
+        }
+
+        for(int i = 0; i < 10; i++){
+            String s = ((char)(colonne + 'A'))+":"+i;
+
+            //if(listeUnite[ligne][i].free())
+            list.add(s);
+        }
+
+        return list;
+
+    }
+
+
+    public void jouer(String move, Couleur couleur){
+        char colonneChar = move.split(":")[0].charAt(0);
+        String ligneString = move.split(":")[1];
+
+        int colonne = colonneChar - 'A';
+        int ligne = Integer.parseInt(ligneString);
+
+        //listeUnite[ligne][colonne].couleur = couleur;
+
+        avant_dernier = dernier;
+        dernier = listeUnite[ligne][colonne];
+    }
+
+    public static String getMove(int colonne, int ligne){
+        String s = "";
+
+        s = ((char)(colonne+'A'))+":"+ligne;
+        return s;
+    }
+
+
+    public static Position getPosition(String move){
+        char colonneChar = move.split(":")[0].charAt(0);
+        String ligneString = move.split(":")[1];
+
+        int colonne = colonneChar - 'A';
+        int ligne = Integer.parseInt(ligneString);
+
+        return new Position(ligne, colonne);
     }
 }

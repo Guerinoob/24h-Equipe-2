@@ -1,7 +1,7 @@
 package JeuCafe;
 
 public class Duo{
-    Noeud noeud;
+    public Noeud noeud;
     int solution;
     public Duo(Noeud n,int sol){
         noeud = n;
