@@ -80,8 +80,14 @@ public class Ilot {
 
 
     public int[] dechiffreEnPuissanceDeDeux(int nb) {
-        //nb doit être >= 1
-
+        //nb doit être >= 1 et <=15
+    	if(nb>=64) {
+    		nb-=64;
+    	}
+    	else if(nb>=32) {
+    		nb-=32;
+    	}
+    	
         int listePuissance [] = new int[] {0, 0,0,0};
 
         if (puissanceProche(nb) == 0) {
